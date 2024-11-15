@@ -1,0 +1,511 @@
+[
+  {
+    "id": "LSQFf587g90",
+    "fullName": "Elma Anthony",
+    "userTier": 3,
+    "status": "Blacklisted",
+    "personalInfo": {
+      "phone": "08015972330",
+      "email": "elmaanthony@lendsqr.com",
+      "gender": "Female",
+      "maritalStatus": "Single",
+      "children": 0,
+      "typeOfResidence": "Rented Apartment"
+    },
+    "employmentInfo": {
+      "levelOfEducation": "MSc Financial Engineering",
+      "employmentStatus": "Employed",
+      "sectorOfEmployment": "Banking",
+      "durationOfEmployment": "5 years",
+      "officeEmail": "elmaanthony@banknig.com",
+      "monthlyIncome": "₦500,000.00",
+      "loanRepayment": "₦50,000.00"
+    },
+    "bank": {
+      "name": "GTBank",
+      "accountNumber": "204877493",
+      "bvn": "2233445567"
+    },
+    "socials": {
+      "twitter": "@elmaanthony",
+      "facebook": "Elma Anthony",
+      "instagram": "@elmaanthony"
+    },
+    "guarantor": {
+      "fullName": "Samuel Anthony",
+      "phone": "08122334456",
+      "email": "samuel@personalmail.com",
+      "relationship": "Brother"
+    }
+  },
+
+  {
+    "id": "LSQEf587g90",
+    "fullName": "Morrison Boone",
+    "userTier": 2,
+    "status": "Inactive",
+    "personalInfo": {
+      "phone": "08068759513",
+      "email": "morrisonboone@lendsqr.com",
+      "gender": "Male",
+      "maritalStatus": "Married",
+      "children": 2,
+      "typeOfResidence": "Owned Apartment"
+    },
+    "employmentInfo": {
+      "levelOfEducation": "BSc Computer Science",
+      "employmentStatus": "Employed",
+      "sectorOfEmployment": "IT",
+      "durationOfEmployment": "4 years",
+      "officeEmail": "morrisonboone@techfirm.com",
+      "monthlyIncome": "₦400,000.00",
+      "loanRepayment": "₦70,000.00"
+    },
+    "bank": {
+      "name": "Zenith Bank",
+      "accountNumber": "321566487",
+      "bvn": "2233445567"
+    },
+    "socials": {
+      "twitter": "@morrisonboone",
+      "facebook": "Morrison Boone",
+      "instagram": "@morrisonboone"
+    },
+    "guarantor": {
+      "fullName": "James Boone",
+      "phone": "08123456789",
+      "email": "james@personalmail.com",
+      "relationship": "Father"
+    }
+  },
+
+  {
+    "id": "LSQgf587g90",
+    "fullName": "Alston Arnold",
+    "userTier": 4,
+    "status": "Blacklisted",
+    "personalInfo": {
+      "phone": "08025628434",
+      "email": "alstonarnold@lendsqr.com",
+      "gender": "Male",
+      "maritalStatus": "Single",
+      "children": 0,
+      "typeOfResidence": "Rented Apartment"
+    },
+    "employmentInfo": {
+      "levelOfEducation": "MSc Marketing",
+      "employmentStatus": "Employed",
+      "sectorOfEmployment": "Education",
+      "durationOfEmployment": "3 years",
+      "officeEmail": "alstonarnold@university.com",
+      "monthlyIncome": "₦350,000.00",
+      "loanRepayment": "₦40,000.00"
+    },
+    "bank": {
+      "name": "GTBank",
+      "accountNumber": "239475678",
+      "bvn": "3355444333"
+    },
+    "socials": {
+      "twitter": "@alstonarnold",
+      "facebook": "Alston Arnold",
+      "instagram": "@alstonarnold"
+    },
+    "guarantor": {
+      "fullName": "Jennifer Arnold",
+      "phone": "08012345678",
+      "email": "jennifer@personalmail.com",
+      "relationship": "Mother"
+    }
+  },
+  {
+    "id": "LSQif587g90",
+    "fullName": "Nell Compton",
+    "userTier": 1,
+    "status": "Active",
+    "personalInfo": {
+      "phone": "08037533505",
+      "email": "nellcompton@lendsqr.com",
+      "gender": "Female",
+      "maritalStatus": "Single",
+      "children": 0,
+      "typeOfResidence": "Rented Apartment"
+    },
+    "employmentInfo": {
+      "levelOfEducation": "PhD Psychology",
+      "employmentStatus": "Self-employed",
+      "sectorOfEmployment": "Healthcare",
+      "durationOfEmployment": "2 years",
+      "officeEmail": "nellcompton@healthcare.com",
+      "monthlyIncome": "₦600,000.00",
+      "loanRepayment": "₦120,000.00"
+    },
+    "bank": {
+      "name": "Providus Bank",
+      "accountNumber": "123456789",
+      "bvn": "2233445555"
+    },
+    "socials": {
+      "twitter": "@nellcompton",
+      "facebook": "Nell Compton",
+      "instagram": "@nellcompton"
+    },
+    "guarantor": {
+      "fullName": "Daniel Compton",
+      "phone": "08123456789",
+      "email": "daniel@personalmail.com",
+      "relationship": "Brother"
+    }
+  },
+  {
+    "id": "LSQhf587g90",
+    "fullName": "Rhoda Sharp",
+    "userTier": 3,
+    "status": "Pending",
+    "personalInfo": {
+      "phone": "08023475168",
+      "email": "rhodasharp@lendsqr.com",
+      "gender": "Female",
+      "maritalStatus": "Single",
+      "children": 0,
+      "typeOfResidence": "Rented Apartment"
+    },
+    "employmentInfo": {
+      "levelOfEducation": "BSc Accounting",
+      "employmentStatus": "Employed",
+      "sectorOfEmployment": "Finance",
+      "durationOfEmployment": "1 year",
+      "officeEmail": "rhodasharp@financecorp.com",
+      "monthlyIncome": "₦200,000.00",
+      "loanRepayment": "₦30,000.00"
+    },
+    "bank": {
+      "name": "First Bank",
+      "accountNumber": "122334455",
+      "bvn": "1122334455"
+    },
+    "socials": {
+      "twitter": "@rhodasharp",
+      "facebook": "Rhoda Sharp",
+      "instagram": "@rhodasharp"
+    },
+    "guarantor": {
+      "fullName": "Angela Sharp",
+      "phone": "08012345678",
+      "email": "angela@personalmail.com",
+      "relationship": "Mother"
+    }
+  },
+  {
+    "id": "LSQjf587g90",
+    "fullName": "Morse Moses",
+    "userTier": 4,
+    "status": "Blacklisted",
+    "personalInfo": {
+      "phone": "08033367806",
+      "email": "morsemoses@lendsqr.com",
+      "gender": "Male",
+      "maritalStatus": "Married",
+      "children": 3,
+      "typeOfResidence": "Owned House"
+    },
+    "employmentInfo": {
+      "levelOfEducation": "MBA",
+      "employmentStatus": "Self-employed",
+      "sectorOfEmployment": "Consulting",
+      "durationOfEmployment": "6 years",
+      "officeEmail": "morsemoses@consulting.com",
+      "monthlyIncome": "₦800,000.00",
+      "loanRepayment": "₦150,000.00"
+    },
+    "bank": {
+      "name": "Access Bank",
+      "accountNumber": "876543210",
+      "bvn": "5566778899"
+    },
+    "socials": {
+      "twitter": "@morsemoses",
+      "facebook": "Morse Moses",
+      "instagram": "@morsemoses"
+    },
+    "guarantor": {
+      "fullName": "Peter Moses",
+      "phone": "08034567890",
+      "email": "peter@personalmail.com",
+      "relationship": "Brother"
+    }
+  },
+  {
+    "id": "LSQkf587g90",
+    "fullName": "Eddie Norton",
+    "userTier": 2,
+    "status": "Inactive",
+    "personalInfo": {
+      "phone": "08028668325",
+      "email": "eddienorton@lendsqr.com",
+      "gender": "Male",
+      "maritalStatus": "Divorced",
+      "children": 1,
+      "typeOfResidence": "Rented Apartment"
+    },
+    "employmentInfo": {
+      "levelOfEducation": "BSc Mechanical Engineering",
+      "employmentStatus": "Employed",
+      "sectorOfEmployment": "Manufacturing",
+      "durationOfEmployment": "5 years",
+      "officeEmail": "eddienorton@manufacorp.com",
+      "monthlyIncome": "₦300,000.00",
+      "loanRepayment": "₦50,000.00"
+    },
+    "bank": {
+      "name": "Stanbic IBTC",
+      "accountNumber": "654321987",
+      "bvn": "6677889900"
+    },
+    "socials": {
+      "twitter": "@eddienorton",
+      "facebook": "Eddie Norton",
+      "instagram": "@eddienorton"
+    },
+    "guarantor": {
+      "fullName": "Julia Norton",
+      "phone": "08023456789",
+      "email": "julia@personalmail.com",
+      "relationship": "Mother"
+    }
+  },
+  {
+    "id": "LSQlf587g90",
+    "fullName": "Cruz Peterson",
+    "userTier": 3,
+    "status": "Pending",
+    "personalInfo": {
+      "phone": "08056514007",
+      "email": "cruzpeterson@lendsqr.com",
+      "gender": "Male",
+      "maritalStatus": "Single",
+      "children": 0,
+      "typeOfResidence": "Owned House"
+    },
+    "employmentInfo": {
+      "levelOfEducation": "BA English",
+      "employmentStatus": "Employed",
+      "sectorOfEmployment": "Education",
+      "durationOfEmployment": "2 years",
+      "officeEmail": "cruzpeterson@school.com",
+      "monthlyIncome": "₦250,000.00",
+      "loanRepayment": "₦40,000.00"
+    },
+    "bank": {
+      "name": "UBA",
+      "accountNumber": "112233445",
+      "bvn": "6677889900"
+    },
+    "socials": {
+      "twitter": "@cruzpeterson",
+      "facebook": "Cruz Peterson",
+      "instagram": "@cruzpeterson"
+    },
+    "guarantor": {
+      "fullName": "Alice Peterson",
+      "phone": "08123456789",
+      "email": "alice@personalmail.com",
+      "relationship": "Sister"
+    }
+  },
+  {
+    "id": "LSQzf587g90",
+    "fullName": "Thornton Morris",
+    "userTier": 1,
+    "status": "Active",
+    "personalInfo": {
+      "phone": "08091500193",
+      "email": "thorntonmorris@lendsqr.com",
+      "gender": "Male",
+      "maritalStatus": "Married",
+      "children": 2,
+      "typeOfResidence": "Rented Apartment"
+    },
+    "employmentInfo": {
+      "levelOfEducation": "PhD Economics",
+      "employmentStatus": "Self-employed",
+      "sectorOfEmployment": "Finance",
+      "durationOfEmployment": "7 years",
+      "officeEmail": "thorntonmorris@financecorp.com",
+      "monthlyIncome": "₦1,000,000.00",
+      "loanRepayment": "₦200,000.00"
+    },
+    "bank": {
+      "name": "Diamond Bank",
+      "accountNumber": "342567890",
+      "bvn": "1122334455"
+    },
+    "socials": {
+      "twitter": "@thorntonmorris",
+      "facebook": "Thornton Morris",
+      "instagram": "@thorntonmorris"
+    },
+    "guarantor": {
+      "fullName": "Cynthia Morris",
+      "phone": "08012345678",
+      "email": "cynthia@personalmail.com",
+      "relationship": "Wife"
+    }
+  },
+  {
+    "id": "LSQmf587g90",
+    "fullName": "Janell Carr",
+    "userTier": 4,
+    "status": "Blacklisted",
+    "personalInfo": {
+      "phone": "08092892480",
+      "email": "janellcarr@lendsqr.com",
+      "gender": "Female",
+      "maritalStatus": "Single",
+      "children": 0,
+      "typeOfResidence": "Rented Apartment"
+    },
+    "employmentInfo": {
+      "levelOfEducation": "BSc Business Administration",
+      "employmentStatus": "Employed",
+      "sectorOfEmployment": "Retail",
+      "durationOfEmployment": "2 years",
+      "officeEmail": "janellcarr@retailcorp.com",
+      "monthlyIncome": "₦150,000.00",
+      "loanRepayment": "₦20,000.00"
+    },
+    "bank": {
+      "name": "GTBank",
+      "accountNumber": "556677889",
+      "bvn": "2233445566"
+    },
+    "socials": {
+      "twitter": "@janellcarr",
+      "facebook": "Janell Carr",
+      "instagram": "@janellcarr"
+    },
+    "guarantor": {
+      "fullName": "Emily Carr",
+      "phone": "08023456789",
+      "email": "emily@personalmail.com",
+      "relationship": "Sister"
+    }
+  },
+  {
+    "id": "LSQvf587g90",
+    "fullName": "Sharron Mueller",
+    "userTier": 3,
+    "status": "Blacklisted",
+    "personalInfo": {
+      "phone": "08088615830",
+      "email": "sharronmueller@lendsqr.com",
+      "gender": "Female",
+      "maritalStatus": "Married",
+      "children": 2,
+      "typeOfResidence": "Owned House"
+    },
+    "employmentInfo": {
+      "levelOfEducation": "MBA",
+      "employmentStatus": "Employed",
+      "sectorOfEmployment": "Healthcare",
+      "durationOfEmployment": "3 years",
+      "officeEmail": "sharronmueller@healthcare.com",
+      "monthlyIncome": "₦500,000.00",
+      "loanRepayment": "₦80,000.00"
+    },
+    "bank": {
+      "name": "First Bank",
+      "accountNumber": "987654321",
+      "bvn": "3344556677"
+    },
+    "socials": {
+      "twitter": "@sharronmueller",
+      "facebook": "Sharron Mueller",
+      "instagram": "@sharronmueller"
+    },
+    "guarantor": {
+      "fullName": "Sarah Mueller",
+      "phone": "08034567890",
+      "email": "sarah@personalmail.com",
+      "relationship": "Sister"
+    }
+  },
+  {
+    "id": "LSQ2f587g90",
+    "fullName": "Johnston Noble",
+    "userTier": 2,
+    "status": "Inactive",
+    "personalInfo": {
+      "phone": "08082371294",
+      "email": "johnstonnoble@lendsqr.com",
+      "gender": "Male",
+      "maritalStatus": "Divorced",
+      "children": 1,
+      "typeOfResidence": "Rented Apartment"
+    },
+    "employmentInfo": {
+      "levelOfEducation": "BSc Computer Science",
+      "employmentStatus": "Employed",
+      "sectorOfEmployment": "Technology",
+      "durationOfEmployment": "4 years",
+      "officeEmail": "johnstonnoble@techcorp.com",
+      "monthlyIncome": "₦400,000.00",
+      "loanRepayment": "₦60,000.00"
+    },
+    "bank": {
+      "name": "Access Bank",
+      "accountNumber": "4455667788",
+      "bvn": "7788990011"
+    },
+    "socials": {
+      "twitter": "@johnstonnoble",
+      "facebook": "Johnston Noble",
+      "instagram": "@johnstonnoble"
+    },
+    "guarantor": {
+      "fullName": "Peter Noble",
+      "phone": "08012345678",
+      "email": "peter@personalmail.com",
+      "relationship": "Father"
+    }
+  },
+  {
+    "id": "LSQ3f587g90",
+    "fullName": "Terry McCray",
+    "userTier": 1,
+    "status": "Active",
+    "personalInfo": {
+      "phone": "08064782437",
+      "email": "terrymccray@lendsqr.com",
+      "gender": "Male",
+      "maritalStatus": "Single",
+      "children": 0,
+      "typeOfResidence": "Rented Apartment"
+    },
+    "employmentInfo": {
+      "levelOfEducation": "BSc Marketing",
+      "employmentStatus": "Employed",
+      "sectorOfEmployment": "Sales",
+      "durationOfEmployment": "3 years",
+      "officeEmail": "terrymccray@salesteam.com",
+      "monthlyIncome": "₦250,000.00",
+      "loanRepayment": "₦40,000.00"
+    },
+    "bank": {
+      "name": "Zenith Bank",
+      "accountNumber": "3344556677",
+      "bvn": "1122334455"
+    },
+    "socials": {
+      "twitter": "@terrymccray",
+      "facebook": "Terry McCray",
+      "instagram": "@terrymccray"
+    },
+    "guarantor": {
+      "fullName": "Beverly McCray",
+      "phone": "08034567890",
+      "email": "beverly@personalmail.com",
+      "relationship": "Mother"
+    }
+  }
+]
