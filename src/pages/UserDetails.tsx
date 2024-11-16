@@ -1,6 +1,6 @@
 // src/components/UserDetails.tsx
 import React, { useEffect, useState } from "react";
-import { useParams, Outlet, Link, useNavigate } from "react-router-dom";
+import { useParams, Outlet, NavLink, useNavigate } from "react-router-dom";
 import { UserDetails as UserDetailsType } from "../types/types";
 import { useUsers } from "../context/userContext";
 
@@ -11,33 +11,61 @@ const UserDetails: React.FC = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!userDetails.length) {
-      fetchUserDetails(); // Make sure details are loaded
-    }
-    const detail = userDetails.find((user) => user.id === userId);
-    if (detail) {
-      setUserDetail(detail);
+    // Fetching user details only if they are not already loaded
+    if (userDetails.length === 0) {
+      fetchUserDetails();
     } else {
-      navigate("/404");
+      const detail = userDetails.find((user) => user.id === userId);
+      if (!detail) {
+        navigate("/404");
+      } else {
+        setUserDetail(detail);
+      }
     }
   }, [userId, userDetails, fetchUserDetails, navigate]);
 
+  // Tab navigation styling for active links
+  const activeStyle = {
+    textDecoration: "underline",
+    color: "blue",
+  };
+
   return (
     <div>
-      <h2>User Details: {userDetail?.fullName}</h2>
+      <h2>User Details: {userDetail?.fullName || "Loading..."}</h2>
       <nav>
         <ul>
           <li>
-            <Link to="">General Details</Link>
+            <NavLink
+              to=""
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
+              General Details
+            </NavLink>
           </li>
           <li>
-            <Link to="employment">Employment (404)</Link>
+            <NavLink
+              to="employment"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
+              Employment (404)
+            </NavLink>
           </li>
           <li>
-            <Link to="bank">Bank Details (404)</Link>
+            <NavLink
+              to="bank"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
+              Bank Details (404)
+            </NavLink>
           </li>
           <li>
-            <Link to="socials">Socials (404)</Link>
+            <NavLink
+              to="socials"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            >
+              Socials (404)
+            </NavLink>
           </li>
         </ul>
       </nav>

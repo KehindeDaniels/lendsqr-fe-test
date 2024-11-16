@@ -6,6 +6,7 @@ export interface UserSummary {
   fullName: string;
   dateJoined: string;
   phoneNumber: string;
+  organization: string;
 }
 
 export interface UserDetails {
@@ -29,6 +30,7 @@ export interface UserDetails {
     officeEmail: string;
     monthlyIncome: string;
     loanRepayment: string;
+    organization: string;
   };
   bank: {
     name: string;
@@ -53,4 +55,5 @@ export interface UserContextType {
   userDetails: UserDetails[];
   fetchUserData: () => void;
   fetchUserDetails: () => void;
+  updateUserStatus: (userId: string, newStatus: string) => void;
 }

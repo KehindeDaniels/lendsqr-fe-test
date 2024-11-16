@@ -1,5 +1,5 @@
 // src/components/UserList.tsx
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   useReactTable,
@@ -9,16 +9,50 @@ import {
 } from "@tanstack/react-table";
 import { useUsers } from "../context/userContext";
 import { UserSummary } from "../types/types";
-import ActionMenu from "./ActionMenu"; // Make sure to import ActionMenu
+import ActionMenu from "./ActionMenu";
+import FilterModal from "./FilterModal";
 
 const UserList: React.FC = () => {
   const { userList } = useUsers();
   const navigate = useNavigate();
+  const [showFilterModal, setShowFilterModal] = useState<boolean>(false);
+
+  const toggleFilterModal = () => setShowFilterModal(!showFilterModal);
+
+  const getStatusStyle = (status: string): React.CSSProperties => {
+    switch (status) {
+      case "Active":
+        return { color: "green", fontWeight: "bold" };
+      case "Blacklisted":
+        return { color: "red", fontWeight: "bold" };
+      case "Inactive":
+        return { color: "gray", fontStyle: "italic" };
+      default:
+        return {};
+    }
+  };
+
+  const formatDate = (dateString: string): string => {
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "2-digit",
+      year: "numeric",
+      hour: "numeric",
+      minute: "2-digit",
+      hour12: true,
+    }).format(date);
+  };
 
   const columns: ColumnDef<UserSummary>[] = [
     {
+      accessorKey: "organization",
+      header: () => <span>Organization</span>,
+      cell: (info) => info.getValue() as string,
+    },
+    {
       accessorKey: "fullName",
-      header: "Full Name",
+      header: () => <span>Full Name</span>,
       cell: (info) => (
         <div
           style={{ cursor: "pointer" }}
@@ -30,21 +64,31 @@ const UserList: React.FC = () => {
     },
     {
       accessorKey: "email",
-      header: "Email",
+      header: () => <span>Email</span>,
     },
     {
       accessorKey: "dateJoined",
-      header: "Date Joined",
-      cell: (info) => new Date(info.getValue() as string).toLocaleDateString(),
+      header: () => <span>Date Joined</span>,
+      cell: (info) => formatDate(info.getValue() as string),
+    },
+    {
+      accessorKey: "phoneNumber",
+      header: () => <span>Phone Number</span>,
+      cell: (info) => <span>{info.getValue() as string}</span>,
     },
     {
       accessorKey: "status",
-      header: "Status",
+      header: () => <span>Status</span>,
+      cell: (info) => (
+        <span style={getStatusStyle(info.getValue() as string)}>
+          {info.getValue() as string}
+        </span>
+      ),
     },
     {
       accessorFn: (row) => row.id,
       id: "action",
-      header: "Action",
+      header: () => <span>Action</span>,
       cell: (info) => <ActionMenu userId={info.row.original.id} />,
     },
   ];
@@ -58,18 +102,18 @@ const UserList: React.FC = () => {
   return (
     <div>
       <h2>User List</h2>
+      <button onClick={toggleFilterModal}>Filter</button>
+      {showFilterModal && <FilterModal toggleModal={toggleFilterModal} />}
       <table>
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
                 <th key={header.id}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
+                  {flexRender(
+                    header.column.columnDef.header,
+                    header.getContext()
+                  )}
                 </th>
               ))}
             </tr>

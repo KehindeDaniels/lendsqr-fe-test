@@ -1,6 +1,7 @@
 // src/components/ActionMenu.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUsers } from "../context/userContext";
 
 interface ActionMenuProps {
   userId: string;
@@ -8,18 +9,17 @@ interface ActionMenuProps {
 
 const ActionMenu: React.FC<ActionMenuProps> = ({ userId }) => {
   const [showMenu, setShowMenu] = useState(false);
+  const { updateUserStatus } = useUsers();
   const navigate = useNavigate();
 
   const toggleMenu = () => setShowMenu(!showMenu);
   const handleViewDetails = () => navigate(`/dashboard/users/${userId}`);
   const handleBlacklistUser = () => {
-    // Implement blacklist functionality
-    console.log("Blacklist User", userId);
+    updateUserStatus(userId, "Blacklisted");
     toggleMenu();
   };
   const handleActivateUser = () => {
-    // Implement activate functionality
-    console.log("Activate User", userId);
+    updateUserStatus(userId, "Active");
     toggleMenu();
   };
 

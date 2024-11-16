@@ -19,7 +19,8 @@
       "durationOfEmployment": "5 years",
       "officeEmail": "elmaanthony@banknig.com",
       "monthlyIncome": "₦500,000.00",
-      "loanRepayment": "₦50,000.00"
+      "loanRepayment": "₦50,000.00",
+      "organization": "Lendsqr"
     },
     "bank": {
       "name": "GTBank",
@@ -59,7 +60,8 @@
       "durationOfEmployment": "4 years",
       "officeEmail": "morrisonboone@techfirm.com",
       "monthlyIncome": "₦400,000.00",
-      "loanRepayment": "₦70,000.00"
+      "loanRepayment": "₦70,000.00",
+      "organization": "Lendsqr"
     },
     "bank": {
       "name": "Zenith Bank",
@@ -99,7 +101,8 @@
       "durationOfEmployment": "3 years",
       "officeEmail": "alstonarnold@university.com",
       "monthlyIncome": "₦350,000.00",
-      "loanRepayment": "₦40,000.00"
+      "loanRepayment": "₦40,000.00",
+      "organization": "Envanco"
     },
     "bank": {
       "name": "GTBank",
@@ -138,7 +141,8 @@
       "durationOfEmployment": "2 years",
       "officeEmail": "nellcompton@healthcare.com",
       "monthlyIncome": "₦600,000.00",
-      "loanRepayment": "₦120,000.00"
+      "loanRepayment": "₦120,000.00",
+      "organization": "Envanco"
     },
     "bank": {
       "name": "Providus Bank",
@@ -177,7 +181,8 @@
       "durationOfEmployment": "1 year",
       "officeEmail": "rhodasharp@financecorp.com",
       "monthlyIncome": "₦200,000.00",
-      "loanRepayment": "₦30,000.00"
+      "loanRepayment": "₦30,000.00",
+      "organization": "Lendsqr"
     },
     "bank": {
       "name": "First Bank",
@@ -216,7 +221,8 @@
       "durationOfEmployment": "6 years",
       "officeEmail": "morsemoses@consulting.com",
       "monthlyIncome": "₦800,000.00",
-      "loanRepayment": "₦150,000.00"
+      "loanRepayment": "₦150,000.00",
+      "organization": "Lendsqr"
     },
     "bank": {
       "name": "Access Bank",
@@ -255,7 +261,8 @@
       "durationOfEmployment": "5 years",
       "officeEmail": "eddienorton@manufacorp.com",
       "monthlyIncome": "₦300,000.00",
-      "loanRepayment": "₦50,000.00"
+      "loanRepayment": "₦50,000.00",
+      "organization": "Envanco"
     },
     "bank": {
       "name": "Stanbic IBTC",
@@ -294,7 +301,8 @@
       "durationOfEmployment": "2 years",
       "officeEmail": "cruzpeterson@school.com",
       "monthlyIncome": "₦250,000.00",
-      "loanRepayment": "₦40,000.00"
+      "loanRepayment": "₦40,000.00",
+      "organization": "Envanco"
     },
     "bank": {
       "name": "UBA",
@@ -333,7 +341,8 @@
       "durationOfEmployment": "7 years",
       "officeEmail": "thorntonmorris@financecorp.com",
       "monthlyIncome": "₦1,000,000.00",
-      "loanRepayment": "₦200,000.00"
+      "loanRepayment": "₦200,000.00",
+      "organization": "Envanco"
     },
     "bank": {
       "name": "Diamond Bank",
@@ -372,7 +381,8 @@
       "durationOfEmployment": "2 years",
       "officeEmail": "janellcarr@retailcorp.com",
       "monthlyIncome": "₦150,000.00",
-      "loanRepayment": "₦20,000.00"
+      "loanRepayment": "₦20,000.00",
+      "organization": "Irorun"
     },
     "bank": {
       "name": "GTBank",
@@ -411,7 +421,8 @@
       "durationOfEmployment": "3 years",
       "officeEmail": "sharronmueller@healthcare.com",
       "monthlyIncome": "₦500,000.00",
-      "loanRepayment": "₦80,000.00"
+      "loanRepayment": "₦80,000.00",
+      "organization": "Irorun"
     },
     "bank": {
       "name": "First Bank",
@@ -450,7 +461,8 @@
       "durationOfEmployment": "4 years",
       "officeEmail": "johnstonnoble@techcorp.com",
       "monthlyIncome": "₦400,000.00",
-      "loanRepayment": "₦60,000.00"
+      "loanRepayment": "₦60,000.00",
+      "organization": "Irorun"
     },
     "bank": {
       "name": "Access Bank",
@@ -489,7 +501,8 @@
       "durationOfEmployment": "3 years",
       "officeEmail": "terrymccray@salesteam.com",
       "monthlyIncome": "₦250,000.00",
-      "loanRepayment": "₦40,000.00"
+      "loanRepayment": "₦40,000.00",
+      "organization": "Irorun"
     },
     "bank": {
       "name": "Zenith Bank",

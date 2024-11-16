@@ -1,4 +1,4 @@
-userList = https://run.mocky.io/v3/251b3ef8-1b25-47fd-a484-f51b435ec636
-userDetails =https://run.mocky.io/v3/3b3c138c-b521-41dc-bad5-d3628e65ad6b
+userList = https://run.mocky.io/v3/e2610d51-3549-47c5-bc2f-41f4ffd25b38
+userDetails = https://run.mocky.io/v3/c4087e71-851a-43e5-9dff-eaab28a6cddc
 
 
