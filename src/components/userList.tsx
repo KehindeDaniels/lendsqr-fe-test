@@ -7,7 +7,7 @@ import {
   ColumnDef,
   flexRender,
 } from "@tanstack/react-table";
-import { useUsers } from "../context/userContext";
+import { useUsers } from "../context/UserContext";
 import { UserSummary } from "../types/types";
 import ActionMenu from "./ActionMenu";
 import FilterModal from "./FilterModal";

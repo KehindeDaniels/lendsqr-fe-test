@@ -1,0 +1,53 @@
+@use "../../style/variables" as *;
+@use "../../style/mixins" as *;
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  @include respond-to("phone") {
+    // flex-direction: row;
+  }
+
+  .navBar {
+    background-color: red;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+
+  .container {
+    display: flex;
+    flex: 1;
+    overflow: auto;
+
+    @include respond-to("tablet") {
+    }
+
+    .sidebar-layout {
+      //   max-width: 350px;
+      //   padding: 3rem;
+      position: sticky;
+      top: 0;
+      //   max-height: 100vh;
+      //   overflow: auto;
+    }
+    .main-content {
+      background-color: blue;
+      flex-grow: 1;
+      padding: 20px;
+      max-height: 100vh;
+      overflow: auto;
+      padding: 2rem 3rem;
+
+      @include respond-to("tablet") {
+        padding: 1rem 2rem;
+      }
+
+      @include respond-to("phone") {
+        padding: 2rem 8rem;
+      }
+    }
+  }
+}

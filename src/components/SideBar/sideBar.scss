@@ -1,0 +1,126 @@
+@use "../../style/variables" as *;
+@use "../../style/mixins" as *;
+
+.sidebar {
+  transition: width 0.3s ease;
+  height: 100vh;
+  width: 250px;
+  overflow: auto;
+  //   display: flex;
+  //   flex-direction: column;
+  &.closed {
+    width: 70px;
+    background-color: red;
+    .switch-organization,
+    .dashboard-title,
+    .item-name,
+    .category h3 {
+      display: none; // Hide text when sidebar is closed
+    }
+    .toggle-button {
+      // Adjust button style for closed state
+    }
+  }
+
+  .toggle-button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    // position: absolute;
+    // top: 20px;
+    // right: 20px;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  .switch-organization {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 20px;
+    cursor: pointer;
+    &:hover {
+      background-color: darken($color-light-grey, 5%);
+    }
+  }
+
+  .dashboard-title {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    img {
+      margin-right: 10px;
+    }
+  }
+
+  .menu {
+    .category {
+      h3 {
+        padding: 10px 20px;
+      }
+      .items {
+        .item {
+          display: flex;
+          align-items: center;
+          padding: 10px 20px;
+          transition: background-color 0.2s;
+          text-decoration: none;
+
+          &:hover {
+            background-color: $color-primary;
+            color: white;
+          }
+          img {
+            margin-right: 10px;
+          }
+
+          &.active {
+            // opacity: 0.06;
+
+            background: #ace4e472;
+            color: $color-dark-blue;
+            border-left: 4px solid $color-primary;
+          }
+
+          &visited {
+            background-color: $color-primary;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  .sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px 20px;
+    .logout {
+      display: flex;
+      align-items: center;
+      img {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+@include respond-to("tablet") {
+  .sidebar {
+    .toggle-button {
+      top: 15px;
+      right: 15px;
+    }
+  }
+}
+
+@include respond-to("phone") {
+  .sidebar {
+    position: fixed;
+    height: 100vh;
+    z-index: 1000;
+  }
+}
