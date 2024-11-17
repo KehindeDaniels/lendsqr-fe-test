@@ -6,19 +6,25 @@
   height: 100vh;
   width: 250px;
   overflow: auto;
-  //   display: flex;
-  //   flex-direction: column;
+  box-shadow: 8px 5px 10px 0px rgba(0, 0, 0, 0.04);
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
   &.closed {
     width: 70px;
-    background-color: red;
     .switch-organization,
-    .dashboard-title,
+    .dashooard-title-text,
+    .dashboard-text,
     .item-name,
+    .logout-text,
     .category h3 {
-      display: none; // Hide text when sidebar is closed
+      display: none;
     }
     .toggle-button {
-      // Adjust button style for closed state
     }
   }
 
@@ -34,31 +40,33 @@
     }
   }
 
-  .switch-organization {
+  .switch-organization,
+  .dashboard-title {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: $color-dark-blue;
+    gap: 0.5rem;
 
     padding: 10px 20px;
     cursor: pointer;
     &:hover {
-      background-color: darken($color-light-grey, 5%);
-    }
-  }
-
-  .dashboard-title {
-    display: flex;
-    align-items: center;
-    padding: 15px 20px;
-    img {
-      margin-right: 10px;
+      background-color: $color-primary;
+      color: white;
     }
   }
 
   .menu {
     .category {
       h3 {
-        padding: 10px 20px;
+        padding: 10px 1.5rem;
+        font-size: 0.75rem;
+        font-weight: 400;
+        color: $color-dark-blue;
+        margin-top: 1rem;
+        text-transform: uppercase;
+        font-weight: 600;
       }
       .items {
         .item {
@@ -68,25 +76,40 @@
           transition: background-color 0.2s;
           text-decoration: none;
 
+          .item-name {
+            text-decoration: none;
+            color: $color-dark-blue;
+            transition: color 0.2s;
+          }
+
           &:hover {
             background-color: $color-primary;
-            color: white;
+            .item-name {
+              color: white;
+            }
           }
           img {
             margin-right: 10px;
+            opacity: 0.5;
           }
 
           &.active {
             // opacity: 0.06;
 
-            background: #ace4e472;
-            color: $color-dark-blue;
+            background: #c0efef4c;
+            color: $color-dark-blue !important;
             border-left: 4px solid $color-primary;
+            border-radius: 5px 0 0 5px;
+            font-weight: 500;
+
+            &:hover {
+              color: $color-dark-blue !important;
+            }
           }
 
           &visited {
             background-color: $color-primary;
-            color: white;
+            // color: white;
           }
         }
       }
@@ -94,9 +117,6 @@
   }
 
   .sidebar-footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
     padding: 15px 20px;
     .logout {
       display: flex;
@@ -120,6 +140,8 @@
 @include respond-to("phone") {
   .sidebar {
     position: fixed;
+    background-color: white;
+    z-index: 1000;
     height: 100vh;
     z-index: 1000;
   }

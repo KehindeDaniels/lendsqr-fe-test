@@ -1,0 +1,158 @@
+@use "../../style/variables" as *;
+@use "../../style/mixins" as *;
+
+.navbar {
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .navbar-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 2rem;
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .logo-icon {
+        width: 24px;
+        height: 24px;
+      }
+      .logo-text {
+        width: 100px;
+        height: 24px;
+
+        @include respond-to("phone") {
+          display: none;
+        }
+      }
+    }
+
+    .search-bar {
+      display: flex;
+      align-items: center;
+      background-color: #f4f4f4;
+      //   background-color: black;
+      padding: 10px 20px;
+      border-radius: 20px;
+      position: relative;
+      //   width: 300px;
+
+      margin-left: 7rem;
+      width: 40%;
+      //   flex: 1;
+
+      @include respond-to("tablet") {
+        width: max-content;
+        // background-color: transparent;
+        padding: 8px;
+      }
+
+      &.visible {
+        display: flex;
+      }
+
+      .search-input {
+        flex: 1;
+        border: none;
+        background: transparent;
+        outline: none;
+        margin-right: 10px;
+      }
+
+      .search-toggle {
+        // display: flex;
+        position: absolute;
+        right: 0;
+        align-items: center;
+        justify-content: center;
+        background-color: $color-primary;
+        border: none;
+        border-radius: 0 20px 20px 0px;
+        padding: 10px;
+        cursor: pointer;
+
+        @include respond-to("tablet") {
+          border-radius: 10000px;
+          display: flex;
+          position: relative;
+        }
+
+        img {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+
+      .docs-link {
+        margin-right: 20px;
+        text-decoration: underline;
+        color: $color-dark-blue;
+        font-weight: 500;
+      }
+
+      .notification-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 20px;
+        opacity: 0.7;
+      }
+
+      .profile {
+        display: flex;
+        align-items: center;
+
+        .avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+
+        .user-dropdown {
+          display: flex;
+          align-items: center;
+
+          .username {
+            font-weight: bold;
+            margin-right: 5px;
+          }
+
+          .dropdown-icon {
+            width: 16px;
+            height: 16px;
+            opacity: 0.5;
+          }
+        }
+      }
+    }
+  }
+
+  @include respond-to("tablet") {
+    .search-bar {
+      flex: none;
+      justify-content: flex-end;
+
+      .search-input {
+        display: none;
+      }
+
+      &.visible .search-input {
+        display: block;
+      }
+    }
+  }
+}

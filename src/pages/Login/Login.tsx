@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login.scss";
-import logo from "../../assets/logo .svg";
+import logo from "../../assets/logo.svg";
 import illustration from "../../assets/loginIllustration.png";
 
 const Login: React.FC = () => {

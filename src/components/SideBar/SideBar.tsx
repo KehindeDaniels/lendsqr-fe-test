@@ -28,9 +28,9 @@ import organization from "../../assets/icons/organisation.svg";
 import { NavLink } from "react-router-dom";
 
 const SideBar: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(true); // State to manage sidebar toggle
+  const [isOpen, setIsOpen] = useState(false);
 
-  const toggleSidebar = () => setIsOpen(!isOpen); // Function to toggle sidebar
+  const toggleSidebar = () => setIsOpen(!isOpen);
 
   const sideBarItems = [
     {
@@ -89,12 +89,13 @@ const SideBar: React.FC = () => {
         {isOpen ? "Close" : "Open"}
       </button>
       <div className="switch-organization">
-        Switch Organization
-        <img src={arrowDown} alt="Arrow Down" />
+        <img src={organization} alt="Organization" />
+        <span className="switch-organization-text">Switch Organization</span>
+        <img src={arrowDown} alt="Arrow Down" className="arrow-icon" />
       </div>
       <h1 className="dashboard-title">
         <img src={home} alt="Home" />
-        Dashboard
+        <span className="dashboard-text">Dashboard</span>
       </h1>
       <div className="menu">
         {sideBarItems.map((category) => (
@@ -116,14 +117,14 @@ const SideBar: React.FC = () => {
             </div>
           </div>
         ))}
+        <footer className="sidebar-footer">
+          <Link to="/" className="logout">
+            <img src={logOut} alt="Logout" />
+            <span className="logout-text">Logout</span>
+          </Link>
+          <p>v1.20</p>
+        </footer>
       </div>
-      <footer className="sidebar-footer">
-        <Link to="/login" className="logout">
-          <img src={logOut} alt="Logout" />
-          Logout
-        </Link>
-        <p>v1.20</p>
-      </footer>
     </div>
   );
 };
