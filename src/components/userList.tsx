@@ -1,20 +1,26 @@
-// src/components/UserList.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   useReactTable,
   getCoreRowModel,
+  getSortedRowModel,
+  getPaginationRowModel,
   ColumnDef,
+  SortingState,
   flexRender,
 } from "@tanstack/react-table";
 import { useUsers } from "../context/UserContext";
 import { UserSummary } from "../types/types";
 import ActionMenu from "./ActionMenu";
 import FilterModal from "./FilterModal";
+import sortIcon from "../assets/filter.svg";
+import arrowDown from "../assets/filter.svg";
+import arrowUp from "../assets/filter.svg";
 
 const UserList: React.FC = () => {
   const { userList } = useUsers();
   const navigate = useNavigate();
+  const [sorting, setSorting] = useState<SortingState>([]);
   const [showFilterModal, setShowFilterModal] = useState<boolean>(false);
 
   const toggleFilterModal = () => setShowFilterModal(!showFilterModal);
@@ -47,12 +53,40 @@ const UserList: React.FC = () => {
   const columns: ColumnDef<UserSummary>[] = [
     {
       accessorKey: "organization",
-      header: () => <span>Organization</span>,
+      header: ({ column }) => (
+        <div
+          onClick={() => column.toggleSorting()}
+          style={{ cursor: "pointer" }}
+        >
+          <span>Organization</span>
+          {column.getIsSorted() === "asc" && (
+            <img src={arrowUp} alt="Ascending" />
+          )}
+          {column.getIsSorted() === "desc" && (
+            <img src={arrowDown} alt="Descending" />
+          )}
+          {!column.getIsSorted() && <img src={sortIcon} alt="Unsorted" />}
+        </div>
+      ),
       cell: (info) => info.getValue() as string,
     },
     {
       accessorKey: "fullName",
-      header: () => <span>Full Name</span>,
+      header: ({ column }) => (
+        <div
+          onClick={() => column.toggleSorting()}
+          style={{ cursor: "pointer" }}
+        >
+          <span>Full Name</span>
+          {column.getIsSorted() === "asc" && (
+            <img src={arrowUp} alt="Ascending" />
+          )}
+          {column.getIsSorted() === "desc" && (
+            <img src={arrowDown} alt="Descending" />
+          )}
+          {!column.getIsSorted() && <img src={sortIcon} alt="Unsorted" />}
+        </div>
+      ),
       cell: (info) => (
         <div
           style={{ cursor: "pointer" }}
@@ -68,7 +102,21 @@ const UserList: React.FC = () => {
     },
     {
       accessorKey: "dateJoined",
-      header: () => <span>Date Joined</span>,
+      header: ({ column }) => (
+        <div
+          onClick={() => column.toggleSorting()}
+          style={{ cursor: "pointer" }}
+        >
+          <span>Date Joined</span>
+          {column.getIsSorted() === "asc" && (
+            <img src={arrowUp} alt="Ascending" />
+          )}
+          {column.getIsSorted() === "desc" && (
+            <img src={arrowDown} alt="Descending" />
+          )}
+          {!column.getIsSorted() && <img src={sortIcon} alt="Unsorted" />}
+        </div>
+      ),
       cell: (info) => formatDate(info.getValue() as string),
     },
     {
@@ -96,13 +144,26 @@ const UserList: React.FC = () => {
   const table = useReactTable({
     data: userList,
     columns,
+    state: {
+      sorting,
+    },
+    onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    initialState: {
+      pagination: {
+        pageSize: 10, // Default 10 rows per page
+        pageIndex: 0, // Start at the first page
+      },
+    },
   });
 
   return (
     <div>
-      <h2>User List</h2>
-      <button onClick={toggleFilterModal}>Filter</button>
+      <button onClick={toggleFilterModal}>
+        Filter By <img src={arrowDown} alt="" />
+      </button>
       {showFilterModal && <FilterModal toggleModal={toggleFilterModal} />}
       <table>
         <thead>
@@ -131,6 +192,53 @@ const UserList: React.FC = () => {
           ))}
         </tbody>
       </table>
+      {/* Pagination Controls */}
+      <div className="pagination-controls">
+        <div>
+          Showing{" "}
+          <select
+            value={table.getState().pagination.pageSize}
+            onChange={(e) => {
+              table.setPageSize(Number(e.target.value));
+            }}
+          >
+            {[10, 20, 30, 40, 50].map((pageSize) => (
+              <option key={pageSize} value={pageSize}>
+                {pageSize}
+              </option>
+            ))}
+          </select>{" "}
+          out of {userList.length}
+        </div>
+        <div>
+          <button
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            {"<"}
+          </button>
+          {table.getPageCount() > 1 &&
+            Array.from({ length: table.getPageCount() }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => table.setPageIndex(index)}
+                className={
+                  table.getState().pagination.pageIndex === index
+                    ? "active"
+                    : ""
+                }
+              >
+                {index + 1}
+              </button>
+            ))}
+          <button
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            {">"}
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
