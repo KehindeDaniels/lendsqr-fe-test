@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Outlet, NavLink, useNavigate } from "react-router-dom";
 import { UserDetails as UserDetailsType } from "../types/types";
-import { useUsers } from "../context/userContext";
+import { useUsers } from "../context/UserContext";
 
 const UserDetails: React.FC = () => {
   const { userId } = useParams();

@@ -1,7 +1,7 @@
 // src/components/ActionMenu.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUsers } from "../context/userContext";
+import { useUsers } from "../context/UserContext";
 
 interface ActionMenuProps {
   userId: string;
