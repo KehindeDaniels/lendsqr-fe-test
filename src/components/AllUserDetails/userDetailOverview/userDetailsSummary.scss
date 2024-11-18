@@ -1,0 +1,114 @@
+@use "../../../style/variables" as *;
+@use "../../../style/mixins" as *;
+
+.userDetailsSummary {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  // border: 1px solid $color-light-grey; // Adds a subtle border for definition
+
+  .user-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    .divider {
+      // flex: 1;
+      height: 70px;
+      opacity: 0.3;
+      width: 1px;
+      background-color: $color-inactive; // Adds a subtle divider
+      margin: 0 10px;
+
+      @include respond-to("phone") {
+        // display: none;
+        // flex: 1;
+        width: 100%;
+        height: 1px;
+        margin: 10px 0;
+      }
+    }
+
+    .avatar-name {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      .user-avatar {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 2px solid $color-primary; // Highlight avatar with primary color border
+      }
+
+      .name-id {
+        h1 {
+          font-size: 1.5rem; // Increased for better readability
+          color: $color-dark-blue;
+        }
+
+        p {
+          font-size: 1rem; // Uniform text size for id
+          color: $color-medium-blue;
+        }
+      }
+    }
+
+    .user-titer {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+
+      p {
+        font-size: 1rem;
+        color: $color-warning; // Makes the tier description more prominent
+      }
+    }
+
+    .bank {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+
+      p {
+        font-size: 1rem;
+        color: $color-dark-blue;
+      }
+    }
+  }
+
+  @include respond-to("phone") {
+    flex-direction: column;
+    align-items: flex-start;
+
+    .user-info {
+      flex-direction: column;
+      align-items: center; // Center alignment for better mobile appearance
+
+      .avatar-name,
+      .user-titer,
+      .bank {
+        width: 100%; // Full width on mobile for better use of space
+        text-align: center;
+        gap: 10px;
+
+        .user-avatar {
+          margin: 0 auto; // Center the avatar on mobile
+        }
+
+        .name-id,
+        .user-titer,
+        .bank {
+          align-items: center; // Center align the text content
+        }
+      }
+    }
+  }
+}

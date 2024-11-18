@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./userList.scss";
 import {
   useReactTable,
   getCoreRowModel,
@@ -9,13 +10,13 @@ import {
   SortingState,
   flexRender,
 } from "@tanstack/react-table";
-import { useUsers } from "../context/UserContext";
-import { UserSummary } from "../types/types";
-import ActionMenu from "./ActionMenu";
-import FilterModal from "./FilterModal";
-import sortIcon from "../assets/filter.svg";
-import arrowDown from "../assets/filter.svg";
-import arrowUp from "../assets/filter.svg";
+import { useUsers } from "../../context/UserContext";
+import { UserSummary } from "../../types/types";
+import ActionMenu from "../ActionMenu";
+import FilterModal from "../FilterModal";
+import sortIcon from "../../assets/dropDown.svg";
+import arrowDown from "../../assets/dropDown.svg";
+import arrowUp from "../../assets/filter.svg";
 
 const UserList: React.FC = () => {
   const { userList } = useUsers();
@@ -55,6 +56,7 @@ const UserList: React.FC = () => {
       accessorKey: "organization",
       header: ({ column }) => (
         <div
+          className="column-header"
           onClick={() => column.toggleSorting()}
           style={{ cursor: "pointer" }}
         >
@@ -74,6 +76,7 @@ const UserList: React.FC = () => {
       accessorKey: "fullName",
       header: ({ column }) => (
         <div
+          className="column-header"
           onClick={() => column.toggleSorting()}
           style={{ cursor: "pointer" }}
         >
@@ -98,12 +101,13 @@ const UserList: React.FC = () => {
     },
     {
       accessorKey: "email",
-      header: () => <span>Email</span>,
+      header: () => <span className="column-header">Email</span>,
     },
     {
       accessorKey: "dateJoined",
       header: ({ column }) => (
         <div
+          className="column-header"
           onClick={() => column.toggleSorting()}
           style={{ cursor: "pointer" }}
         >
@@ -121,12 +125,12 @@ const UserList: React.FC = () => {
     },
     {
       accessorKey: "phoneNumber",
-      header: () => <span>Phone Number</span>,
+      header: () => <span className="column-header">Phone Number</span>,
       cell: (info) => <span>{info.getValue() as string}</span>,
     },
     {
       accessorKey: "status",
-      header: () => <span>Status</span>,
+      header: () => <span className="column-header">Status</span>,
       cell: (info) => (
         <span style={getStatusStyle(info.getValue() as string)}>
           {info.getValue() as string}
@@ -136,7 +140,7 @@ const UserList: React.FC = () => {
     {
       accessorFn: (row) => row.id,
       id: "action",
-      header: () => <span>Action</span>,
+      header: () => <span className="column-header">Action</span>,
       cell: (info) => <ActionMenu userId={info.row.original.id} />,
     },
   ];
@@ -153,90 +157,92 @@ const UserList: React.FC = () => {
     getPaginationRowModel: getPaginationRowModel(),
     initialState: {
       pagination: {
-        pageSize: 10, // Default 10 rows per page
-        pageIndex: 0, // Start at the first page
+        pageSize: 10,
+        pageIndex: 0,
       },
     },
   });
 
   return (
-    <div>
-      <button onClick={toggleFilterModal}>
+    <div className="table-container">
+      <button onClick={toggleFilterModal} className="filter-button">
         Filter By <img src={arrowDown} alt="" />
       </button>
-      {showFilterModal && <FilterModal toggleModal={toggleFilterModal} />}
-      <table>
-        <thead>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map((header) => (
-                <th key={header.id}>
-                  {flexRender(
-                    header.column.columnDef.header,
-                    header.getContext()
-                  )}
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map((row) => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map((cell) => (
-                <td key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      {/* Pagination Controls */}
-      <div className="pagination-controls">
-        <div>
-          Showing{" "}
-          <select
-            value={table.getState().pagination.pageSize}
-            onChange={(e) => {
-              table.setPageSize(Number(e.target.value));
-            }}
-          >
-            {[10, 20, 30, 40, 50].map((pageSize) => (
-              <option key={pageSize} value={pageSize}>
-                {pageSize}
-              </option>
+      <div className="user-list-table">
+        {showFilterModal && <FilterModal toggleModal={toggleFilterModal} />}
+        <table>
+          <thead>
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <th key={header.id}>
+                    {flexRender(
+                      header.column.columnDef.header,
+                      header.getContext()
+                    )}
+                  </th>
+                ))}
+              </tr>
             ))}
-          </select>{" "}
-          out of {userList.length}
-        </div>
-        <div>
-          <button
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            {"<"}
-          </button>
-          {table.getPageCount() > 1 &&
-            Array.from({ length: table.getPageCount() }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => table.setPageIndex(index)}
-                className={
-                  table.getState().pagination.pageIndex === index
-                    ? "active"
-                    : ""
-                }
-              >
-                {index + 1}
-              </button>
+          </thead>
+          <tbody>
+            {table.getRowModel().rows.map((row) => (
+              <tr key={row.id}>
+                {row.getVisibleCells().map((cell) => (
+                  <td key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
             ))}
-          <button
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            {">"}
-          </button>
+          </tbody>
+        </table>
+        {/* Pagination Controls */}
+        <div className="pagination-controls">
+          <div>
+            Showing{" "}
+            <select
+              value={table.getState().pagination.pageSize}
+              onChange={(e) => {
+                table.setPageSize(Number(e.target.value));
+              }}
+            >
+              {[10, 20, 30, 40, 50].map((pageSize) => (
+                <option key={pageSize} value={pageSize}>
+                  {pageSize}
+                </option>
+              ))}
+            </select>{" "}
+            out of {userList.length}
+          </div>
+          <div>
+            <button
+              onClick={() => table.previousPage()}
+              disabled={!table.getCanPreviousPage()}
+            >
+              {"<"}
+            </button>
+            {table.getPageCount() > 1 &&
+              Array.from({ length: table.getPageCount() }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => table.setPageIndex(index)}
+                  className={
+                    table.getState().pagination.pageIndex === index
+                      ? "active"
+                      : ""
+                  }
+                >
+                  {index + 1}
+                </button>
+              ))}
+            <button
+              onClick={() => table.nextPage()}
+              disabled={!table.getCanNextPage()}
+            >
+              {">"}
+            </button>
+          </div>
         </div>
       </div>
     </div>

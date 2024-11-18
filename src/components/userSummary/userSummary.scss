@@ -7,6 +7,10 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+
+  @include respond-to("phone") {
+    padding: 2rem 4rem;
+  }
 }
 .user-summary {
   display: grid;
@@ -17,6 +21,10 @@
   gap: 20px;
   padding: 20px 0;
   background-color: #fff; // Adjust background color as needed
+
+  @include respond-to("phone") {
+    padding: 2rem 4rem;
+  }
 
   .summary-card {
     display: flex;

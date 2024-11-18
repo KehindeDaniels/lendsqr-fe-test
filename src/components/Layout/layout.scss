@@ -14,7 +14,6 @@
   }
 
   .navBar {
-    // background-color: red;
     position: sticky;
     top: 0;
     z-index: 1;
@@ -24,6 +23,7 @@
     display: flex;
     flex: 1;
     overflow: auto;
+    height: 100vh;
 
     @include respond-to("tablet") {
     }
@@ -55,7 +55,7 @@
       }
 
       @include respond-to("phone") {
-        padding: 2rem 8rem;
+        // padding: 2rem 8rem;
       }
     }
   }
