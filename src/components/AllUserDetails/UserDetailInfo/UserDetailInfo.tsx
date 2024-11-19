@@ -78,6 +78,7 @@ const UserDetailInfo: React.FC<UserDetailInfoProps> = ({ userDetail }) => {
     },
   ];
 
+  console.log("info");
   return (
     <div className="userDetailInfo-container">
       {sections.map((section) => (

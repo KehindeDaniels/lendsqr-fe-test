@@ -7,6 +7,8 @@ export interface UserSummary {
   dateJoined: string;
   phoneNumber: string;
   organization: string;
+  hasLoan: boolean;
+  hasSavings: boolean;
 }
 
 export interface UserDetails {

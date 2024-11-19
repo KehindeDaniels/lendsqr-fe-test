@@ -1,4 +1,3 @@
-// src/context/UserContext.tsx
 import React, {
   createContext,
   useContext,
@@ -32,7 +31,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       setUserList(userListData);
     } else {
       const response = await axios.get<UserSummary[]>(
-        "https://run.mocky.io/v3/e2610d51-3549-47c5-bc2f-41f4ffd25b38"
+        "https://run.mocky.io/v3/4989c9d5-ec0f-4b4f-9270-c4b456e7f9d8"
       );
 
       setUserList(response.data);
@@ -57,13 +56,14 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
   const updateUserStatus = async (userId: string, newStatus: string) => {
     const updatedUserList = userList.map((user) => {
+      // console.log(user);
       if (user.id === userId) {
         return { ...user, status: newStatus };
       }
       return user;
     });
     setUserList(updatedUserList);
-    await localForage.setItem("userList", updatedUserList); // Persist the updated list
+    await localForage.setItem("userList", updatedUserList);
   };
 
   return (

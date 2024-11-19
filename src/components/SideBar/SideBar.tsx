@@ -86,7 +86,7 @@ const SideBar: React.FC = () => {
   return (
     <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
       <button className="toggle-button" onClick={toggleSidebar}>
-        {isOpen ? "Close" : "Open"}
+        <div className={`bar ${isOpen ? "open" : "closed"}`}></div>
       </button>
       <div className="switch-organization">
         <img src={organization} alt="Organization" />

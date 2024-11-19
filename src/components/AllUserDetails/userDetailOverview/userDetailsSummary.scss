@@ -2,6 +2,7 @@
 @use "../../../style/mixins" as *;
 
 .userDetailsSummary {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -10,6 +11,54 @@
   background-color: #fff;
   margin-bottom: 20px;
   // border: 1px solid $color-light-grey;
+
+  .userStatus {
+    align-self: flex-start;
+
+    @include respond-to("tablet") {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .active,
+    .sinactive,
+    .blacklisted,
+    .spending {
+      border-radius: 40px;
+      padding: 0.5rem 1.5rem;
+      // align-self: ;
+    }
+
+    .blacklisted {
+      color: $color-error;
+      background: #f4bcc21d;
+      border-radius: 30px;
+      padding: 0.5rem 1.5rem;
+    }
+
+    .active {
+      color: $color-active;
+      background: #39cd6211;
+      border-radius: 30px;
+      padding: 0.5rem 1.5rem;
+      // align-self: flex-start;
+      // justify-self: self-start;
+    }
+
+    .sinactive {
+      color: $color-inactive;
+      background: #545f7d11;
+      border-radius: 30px;
+      padding: 0.5rem 1.5rem;
+    }
+
+    .spending {
+      color: $color-warning;
+      background: #e9b20011;
+      border-radius: 30px;
+    }
+  }
 
   .user-info {
     display: flex;
@@ -63,7 +112,7 @@
         p {
           font-size: 1rem;
           color: $color-medium-blue;
-          text-align: left;
+          // text-align: left;
         }
       }
     }

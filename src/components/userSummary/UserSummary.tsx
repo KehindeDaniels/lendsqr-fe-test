@@ -1,22 +1,36 @@
-// src/components/UserSummary.tsx
 import React from "react";
+import { useUsers } from "../../context/UserContext";
 import "./userSummary.scss";
 
-// Icons
-import userIcon from "../../assets/activeUser.svg";
+import userIcon from "../../assets/allUsers.svg";
 import activeIcon from "../../assets/activeUser.svg";
 import loanIcon from "../../assets/loanUsers.svg";
 import savingsIcon from "../../assets/savinUsers.svg";
 
-// Summary card data
-const summaryData = [
-  { title: "USERS", value: "2,453", icon: userIcon },
-  { title: "ACTIVE USERS", value: "2,453", icon: activeIcon },
-  { title: "USERS WITH LOANS", value: "12,453", icon: loanIcon },
-  { title: "USERS WITH SAVINGS", value: "102,453", icon: savingsIcon },
-];
-
 const UserSummary: React.FC = () => {
+  const { userList } = useUsers();
+
+  const summaryData = [
+    { title: "USERS", value: userList.length.toString(), icon: userIcon },
+    {
+      title: "ACTIVE USERS",
+      value: userList
+        .filter((user) => user.status === "Active")
+        .length.toString(),
+      icon: activeIcon,
+    },
+    {
+      title: "USERS WITH LOANS",
+      value: userList.filter((user) => user.hasLoan).length.toString(),
+      icon: loanIcon,
+    },
+    {
+      title: "USERS WITH SAVINGS",
+      value: userList.filter((user) => user.hasSavings).length.toString(),
+      icon: savingsIcon,
+    },
+  ];
+
   return (
     <>
       <p className="user-title">User</p>
