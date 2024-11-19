@@ -6,10 +6,10 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  // padding: 20px;
   background-color: #fff;
   margin-bottom: 20px;
-  // border: 1px solid $color-light-grey; // Adds a subtle border for definition
+  // border: 1px solid $color-light-grey;
 
   .user-info {
     display: flex;
@@ -21,11 +21,11 @@
       // flex: 1;
       height: 70px;
       opacity: 0.3;
-      width: 1px;
-      background-color: $color-inactive; // Adds a subtle divider
+      width: 0.5px;
+      background-color: rgba(33, 64, 125, 0.409);
       margin: 0 10px;
 
-      @include respond-to("phone") {
+      @include respond-to("tablet") {
         // display: none;
         // flex: 1;
         width: 100%;
@@ -37,24 +37,33 @@
     .avatar-name {
       display: flex;
       align-items: center;
+      text-align: left;
       gap: 20px;
+      // background: #000;
+
+      @include respond-to("tablet") {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
 
       .user-avatar {
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        border: 2px solid $color-primary; // Highlight avatar with primary color border
+        border: 2px solid $color-primary;
       }
 
       .name-id {
         h1 {
-          font-size: 1.5rem; // Increased for better readability
+          font-size: 1.5rem;
           color: $color-dark-blue;
         }
 
         p {
-          font-size: 1rem; // Uniform text size for id
+          font-size: 1rem;
           color: $color-medium-blue;
+          text-align: left;
         }
       }
     }
@@ -65,9 +74,13 @@
       align-items: flex-start;
       gap: 5px;
 
+      @include respond-to("tablet") {
+        align-items: center;
+      }
+
       p {
         font-size: 1rem;
-        color: $color-warning; // Makes the tier description more prominent
+        color: $color-warning;
       }
     }
 
@@ -77,6 +90,10 @@
       align-items: flex-start;
       gap: 5px;
 
+      @include respond-to("tablet") {
+        align-items: center;
+      }
+
       p {
         font-size: 1rem;
         color: $color-dark-blue;
@@ -84,29 +101,29 @@
     }
   }
 
-  @include respond-to("phone") {
+  @include respond-to("tablet") {
     flex-direction: column;
     align-items: flex-start;
 
     .user-info {
       flex-direction: column;
-      align-items: center; // Center alignment for better mobile appearance
+      align-items: center;
 
       .avatar-name,
       .user-titer,
       .bank {
-        width: 100%; // Full width on mobile for better use of space
+        width: 100%;
         text-align: center;
         gap: 10px;
 
-        .user-avatar {
-          margin: 0 auto; // Center the avatar on mobile
-        }
+        // .user-avatar {
+        //   margin: 0 auto;
+        // }
 
         .name-id,
         .user-titer,
         .bank {
-          align-items: center; // Center align the text content
+          align-items: center;
         }
       }
     }

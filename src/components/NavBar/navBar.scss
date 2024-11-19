@@ -98,6 +98,9 @@
       align-items: center;
       margin-left: auto;
 
+      @include respond-to("tab") {
+        margin-left: 0;
+      }
       .docs-link {
         margin-right: 20px;
         text-decoration: underline;

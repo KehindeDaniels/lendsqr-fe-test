@@ -14,7 +14,11 @@ const UserDetailsSummary: React.FC<UserDetailsSummaryProps> = ({
     <div className="userDetailsSummary">
       <div className="user-info">
         <div className="avatar-name">
-          <img src={avatarIcon} alt="User Avatar" className="user-avatar" />
+          <img
+            src={`https://api.dicebear.com/6.x/adventurer/svg?seed=JohnDoe`}
+            alt="User Avatar"
+            className="user-avatar"
+          />
           <div className="name-id">
             <h1>{userDetail?.fullName}</h1>
             <p>{userDetail?.id}</p>

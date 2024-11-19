@@ -1,0 +1,43 @@
+@use "../../../style/variables" as *;
+@use "../../../style/mixins" as *;
+
+.user-detail-nav {
+  //   padding: 0.5rem 1rem; // Padding around the nav items
+  list-style: none;
+  overflow: auto;
+  //   display: flex;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  ul {
+    display: flex;
+    gap: 1rem;
+    // background: #000;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px;
+
+    li {
+      list-style: none;
+    }
+  }
+  a {
+    text-decoration: none;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+    text-wrap: nowrap;
+
+    &:hover,
+    &.active {
+      color: $color-primary;
+      border-bottom: 3px solid $color-primary;
+      padding-bottom: 16px;
+    }
+  }
+}

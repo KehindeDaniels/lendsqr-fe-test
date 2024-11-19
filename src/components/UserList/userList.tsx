@@ -26,19 +26,6 @@ const UserList: React.FC = () => {
 
   const toggleFilterModal = () => setShowFilterModal(!showFilterModal);
 
-  const getStatusStyle = (status: string): React.CSSProperties => {
-    switch (status) {
-      case "Active":
-        return { color: "green", fontWeight: "bold" };
-      case "Blacklisted":
-        return { color: "red", fontWeight: "bold" };
-      case "Inactive":
-        return { color: "gray", fontStyle: "italic" };
-      default:
-        return {};
-    }
-  };
-
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
     return new Intl.DateTimeFormat("en-US", {
@@ -132,7 +119,17 @@ const UserList: React.FC = () => {
       accessorKey: "status",
       header: () => <span className="column-header">Status</span>,
       cell: (info) => (
-        <span style={getStatusStyle(info.getValue() as string)}>
+        <span
+          className={
+            info.getValue() === "Active"
+              ? "sactive"
+              : info.getValue() === "Blacklisted"
+              ? "sblacklisted"
+              : info.getValue() === "Pending"
+              ? "spending"
+              : "sinactive"
+          }
+        >
           {info.getValue() as string}
         </span>
       ),
@@ -199,7 +196,7 @@ const UserList: React.FC = () => {
         </table>
         {/* Pagination Controls */}
         <div className="pagination-controls">
-          <div>
+          <div className="left">
             Showing{" "}
             <select
               value={table.getState().pagination.pageSize}
@@ -215,8 +212,9 @@ const UserList: React.FC = () => {
             </select>{" "}
             out of {userList.length}
           </div>
-          <div>
+          <div className="right">
             <button
+              className="prev"
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
             >
@@ -237,6 +235,7 @@ const UserList: React.FC = () => {
                 </button>
               ))}
             <button
+              className="next"
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
             >

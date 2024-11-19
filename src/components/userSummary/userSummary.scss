@@ -14,13 +14,10 @@
 }
 .user-summary {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(240px, 1fr)
-  ); // Adjust min width as needed
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 20px;
   padding: 20px 0;
-  background-color: #fff; // Adjust background color as needed
+  background-color: #fff;
 
   @include respond-to("phone") {
     padding: 2rem 4rem;
@@ -50,8 +47,6 @@
     }
 
     .details {
-      //   text-align: center;
-
       .title {
         font-size: 12px;
         color: $color-dark-blue;
@@ -69,9 +64,6 @@
 
 @include respond-to("phone") {
   .user-summary {
-    grid-template-columns: repeat(
-      auto-fill,
-      minmax(200px, 1fr)
-    ); // Adjust for smaller screens
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 }

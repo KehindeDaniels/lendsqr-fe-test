@@ -1,12 +1,12 @@
 // src/components/UserDetails.tsx
 import React, { useEffect, useState } from "react";
 import { useParams, Outlet, useNavigate } from "react-router-dom";
-import { UserDetails as UserDetailsType } from "../types/types";
-import { useUsers } from "../context/UserContext";
-import UserDetailsSummary from "../components/AllUserDetails/userDetailOverview/UserDetailsSummary";
-import UserDetailNav from "../components/AllUserDetails/UserDetailNav/UserDetailNav";
-import UserDetailInfo from "../components/AllUserDetails/UserDetailInfo/UserDetailInfo";
-
+import { UserDetails as UserDetailsType } from "../../types/types";
+import { useUsers } from "../../context/UserContext";
+import UserDetailsSummary from "../../components/AllUserDetails/userDetailOverview/UserDetailsSummary";
+import UserDetailNav from "../../components/AllUserDetails/UserDetailNav/UserDetailNav";
+import UserDetailInfo from "../../components/AllUserDetails/UserDetailInfo/UserDetailInfo";
+import "./userDetails.scss";
 const UserDetails: React.FC = () => {
   const { userId } = useParams();
   const { userDetails, fetchUserDetails } = useUsers();
@@ -28,15 +28,15 @@ const UserDetails: React.FC = () => {
   }, [userId, userDetails, fetchUserDetails, navigate]);
 
   return (
-    <div>
-      {/* <UserDetailsSummary userDetail={userDetail} /> */}
-      <UserDetailsSummary userDetail={userDetail} />
-      {/* <UserDetailNav /> */}
-      <UserDetailNav />
-      <hr />
-      <Outlet /> {/* Render sub-route components */}
-      {/* <UserDetailInfo userDetail={userDetail} /> */}
-      <UserDetailInfo userDetail={userDetail} />
+    <div className="user-details-container">
+      <div className="user-details-header">
+        <UserDetailsSummary userDetail={userDetail} />
+        <UserDetailNav />
+      </div>
+      <div className="user-details-content">
+        <Outlet />
+        <UserDetailInfo userDetail={userDetail} />
+      </div>
     </div>
   );
 };

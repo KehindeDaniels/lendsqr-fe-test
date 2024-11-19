@@ -55,7 +55,7 @@
 
     th,
     td {
-      padding: 0.75rem 0.5rem;
+      padding: 1rem 0.5rem;
 
       text-align: left;
       border-bottom: 1px solid #d9d9d9;
@@ -74,19 +74,39 @@
       text-transform: uppercase;
     }
 
-    .status-cell {
-      &.active {
-        color: $color-active; // Green color for active status
-      }
-      &.blacklisted {
-        color: $color-error; // Red color for blacklisted status
-      }
-      &.inactive {
-        color: $color-inactive; // Grey color for inactive status
-      }
-      &.pending {
-        color: $color-warning; // Yellow color for pending status
-      }
+    .sactive,
+    .sinactive,
+    .sblacklisted,
+    .spending {
+      border-radius: 40px;
+      padding: 0.5rem 1.5rem;
+    }
+
+    .sblacklisted {
+      color: $color-error;
+      background: #f4bcc21d;
+      border-radius: 30px;
+      padding: 0.5rem 1.5rem;
+    }
+
+    .sactive {
+      color: $color-active;
+      background: #39cd6211;
+      border-radius: 30px;
+      padding: 0.5rem 1.5rem;
+    }
+
+    .sinactive {
+      color: $color-inactive;
+      background: #545f7d11;
+      border-radius: 30px;
+      padding: 0.5rem 1.5rem;
+    }
+
+    .spending {
+      color: $color-warning;
+      background: #e9b20011;
+      border-radius: 30px;
     }
 
     // Responsive adjustments
@@ -107,18 +127,82 @@
   }
 }
 
+// .pagination-controls {
+//   display: flex;
+//   justify-content: space-between;
+//   padding: 1rem;
+
+//   button {
+//     padding: 0.5rem 1rem;
+//     margin-right: 0.5rem;
+//     background-color: transparent;
+//     border: 1px solid $color-dark-blue;
+//     border-radius: 5px;
+//     cursor: pointer;
+
+//     &:disabled {
+//       opacity: 0.5;
+//       cursor: default;
+//     }
+
+//     &.active {
+//       background-color: $color-primary;
+//       color: #fff;
+//     }
+//   }
+
+//   select {
+//     padding: 0.5rem;
+//     border-radius: 5px;
+//     border: 1px solid $color-dark-blue;
+//   }
+// }
+
 .pagination-controls {
   display: flex;
   justify-content: space-between;
   padding: 1rem;
 
+  .prev,
+  .next {
+    border-radius: 4px;
+    background: rgba(33, 63, 125, 0.1);
+    width: 32px;
+    height: 32px;
+  }
+  select {
+    width: 80px;
+    height: 40px;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border-radius: 4px;
+    background: rgba(33, 63, 125, 0.1);
+
+    display: flex;
+    place-content: center;
+  }
+
+  .right,
+  .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   button {
     padding: 0.5rem 1rem;
     margin-right: 0.5rem;
     background-color: transparent;
-    border: 1px solid $color-dark-blue;
-    border-radius: 5px;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 
     &:disabled {
       opacity: 0.5;

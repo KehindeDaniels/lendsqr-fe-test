@@ -42,8 +42,7 @@
       padding: 20px;
       max-height: 100vh;
       overflow: auto;
-      padding: 2rem 3rem;
-
+      padding: 1rem 2rem;
       &::-webkit-scrollbar {
         display: none;
       }
@@ -55,7 +54,7 @@
       }
 
       @include respond-to("phone") {
-        // padding: 2rem 8rem;
+        // padding: 2rem 6rem;
       }
     }
   }

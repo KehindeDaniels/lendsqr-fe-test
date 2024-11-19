@@ -1,62 +1,57 @@
-// src/components/AllUserDetails/UserDetailNav/UserDetailNav.tsx
 import React from "react";
 import { NavLink } from "react-router-dom";
-
+import "./navUserDetail.scss";
 const UserDetailNav: React.FC = () => {
-  const activeStyle = {
-    textDecoration: "underline",
-    color: "blue",
-  };
-
   return (
-    <nav>
+    <nav className="user-detail-nav">
       <ul>
         <li>
           <NavLink
             to=""
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            end
+            className={({ isActive }) => (isActive ? "active" : undefined)}
           >
             General Details
           </NavLink>
         </li>
         <li>
           <NavLink
-            to="document"
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
-          >
-            document
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
             to="documents"
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            className={({ isActive }) => (isActive ? "active" : undefined)}
           >
-            documents
+            Documents
           </NavLink>
         </li>
         <li>
           <NavLink
             to="bankDetails"
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            className={({ isActive }) => (isActive ? "active" : undefined)}
           >
-            bankDetails
+            Bank Details
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="loans"
+            className={({ isActive }) => (isActive ? "active" : undefined)}
+          >
+            Loans
           </NavLink>
         </li>
         <li>
           <NavLink
             to="savings"
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            className={({ isActive }) => (isActive ? "active" : undefined)}
           >
-            savings
+            Savings
           </NavLink>
         </li>
         <li>
           <NavLink
             to="appSystem"
-            style={({ isActive }) => (isActive ? activeStyle : undefined)}
+            className={({ isActive }) => (isActive ? "active" : undefined)}
           >
-            appSystem
+            App and System
           </NavLink>
         </li>
       </ul>
@@ -64,4 +59,4 @@ const UserDetailNav: React.FC = () => {
   );
 };
 
-export default UserDetailNav; // <---- Ensure this is here
+export default UserDetailNav;
