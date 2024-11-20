@@ -14,9 +14,7 @@ import { useUsers } from "../../context/UserContext";
 import { UserSummary } from "../../types/types";
 import ActionMenu from "../ActionMenu/ActionMenu";
 import FilterModal from "../FilterModal/FilterModal";
-import sortIcon from "../../assets/dropDown.svg";
-import arrowDown from "../../assets/dropDown.svg";
-import arrowUp from "../../assets/filter.svg";
+import { FilterIcon, DropDown } from "../../assets/index";
 
 const UserList: React.FC = () => {
   const { userList } = useUsers();
@@ -49,12 +47,12 @@ const UserList: React.FC = () => {
         >
           <span>Organization</span>
           {column.getIsSorted() === "asc" && (
-            <img src={arrowUp} alt="Ascending" />
+            <img src={FilterIcon} alt="Ascending" />
           )}
           {column.getIsSorted() === "desc" && (
             <img src={arrowDown} alt="Descending" />
           )}
-          {!column.getIsSorted() && <img src={sortIcon} alt="Unsorted" />}
+          {!column.getIsSorted() && <img src={FilterIcon} alt="Unsorted" />}
         </div>
       ),
       cell: (info) => info.getValue() as string,
@@ -69,12 +67,12 @@ const UserList: React.FC = () => {
         >
           <span>Full Name</span>
           {column.getIsSorted() === "asc" && (
-            <img src={arrowUp} alt="Ascending" />
+            <img src={FilterIcon} alt="Ascending" />
           )}
           {column.getIsSorted() === "desc" && (
-            <img src={arrowDown} alt="Descending" />
+            <img src={FilterIcon} alt="Descending" />
           )}
-          {!column.getIsSorted() && <img src={sortIcon} alt="Unsorted" />}
+          {!column.getIsSorted() && <img src={FilterIcon} alt="Unsorted" />}
         </div>
       ),
       cell: (info) => (
@@ -100,12 +98,12 @@ const UserList: React.FC = () => {
         >
           <span>Date Joined</span>
           {column.getIsSorted() === "asc" && (
-            <img src={arrowUp} alt="Ascending" />
+            <img src={FilterIcon} alt="Ascending" />
           )}
           {column.getIsSorted() === "desc" && (
-            <img src={arrowDown} alt="Descending" />
+            <img src={FilterIcon} alt="Descending" />
           )}
-          {!column.getIsSorted() && <img src={sortIcon} alt="Unsorted" />}
+          {!column.getIsSorted() && <img src={FilterIcon} alt="Unsorted" />}
         </div>
       ),
       cell: (info) => formatDate(info.getValue() as string),
@@ -160,6 +158,7 @@ const UserList: React.FC = () => {
     },
   });
 
+  // Check here akanni
   function generatePaginationButtons(
     currentPage: number,
     totalPages: number,
@@ -207,7 +206,7 @@ const UserList: React.FC = () => {
   return (
     <div className="table-container">
       <button onClick={toggleFilterModal} className="filter-button">
-        Filter By <img src={arrowDown} alt="" />
+        Filter By <img src={DropDown} alt="" />
       </button>
       <div className="user-list-table">
         {showFilterModal && <FilterModal toggleModal={toggleFilterModal} />}
@@ -238,7 +237,8 @@ const UserList: React.FC = () => {
             ))}
           </tbody>
         </table>
-        {/* Pagination Controls */}
+
+        {/* Pagination */}
         <div className="pagination-controls">
           <div className="left">
             Showing{" "}
@@ -256,6 +256,7 @@ const UserList: React.FC = () => {
             </select>{" "}
             out of {userList.length}
           </div>
+
           <div className="right">
             <button
               className="prev"
@@ -266,9 +267,9 @@ const UserList: React.FC = () => {
             </button>
 
             {generatePaginationButtons(
-              table.getState().pagination.pageIndex + 1, // Current page (1-based)
-              table.getPageCount(), // Total pages
-              (page) => table.setPageIndex(page - 1) // Change page handler
+              table.getState().pagination.pageIndex + 1,
+              table.getPageCount(),
+              (page) => table.setPageIndex(page - 1)
             )}
 
             <button

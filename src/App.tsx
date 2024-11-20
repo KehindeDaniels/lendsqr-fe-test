@@ -5,7 +5,6 @@ import { UserProvider } from "./context/UserContext";
 import Layout from "./components/Layout/Layout";
 import Dashboard from "./pages/Dashboard";
 import UserDetails from "./pages/UserDetail/UserDetails"; // This is now a top-level route
-// import Login from "./pages/Login/Login";
 import NotFoundPage from "./pages/NotFoundPage";
 import Login from "./pages/Login/Login";
 
@@ -15,7 +14,6 @@ const App: React.FC = () => {
       <Router>
         <Routes>
           <Route path="/" element={<Login />} />{" "}
-          {/* Login page without layout */}
           <Route path="dashboard" element={<Layout />}>
             <Route index element={<Dashboard />} />
             <Route path="users/:userId" element={<UserDetails />} />

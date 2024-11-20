@@ -3,28 +3,29 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./sideBar.scss";
 
-// Icons import
-import arrowDown from "../../assets/icons/arrowDown.svg";
-import audit from "../../assets/icons/audit.svg";
-import decision from "../../assets/icons/decision.svg";
-import fees from "../../assets/icons/fees.svg";
-import feesAndPricing from "../../assets/icons/feesandPricing.svg";
-import guarantors from "../../assets/icons/guarantors.svg";
-import home from "../../assets/icons/home.svg";
-import karma from "../../assets/icons/karma.svg";
-import loan from "../../assets/icons/loan.svg";
-import logOut from "../../assets/icons/logOut.svg";
-import report from "../../assets/icons/report.svg";
-import requestLoan from "../../assets/icons/requestloan.svg";
-import savings from "../../assets/icons/savings.svg";
-import serviceAccount from "../../assets/icons/serviceAccount.svg";
-import services from "../../assets/icons/services.svg";
-import settlement from "../../assets/icons/settlement.svg";
-import systemMessage from "../../assets/icons/systemmessage.svg";
-import transaction from "../../assets/icons/transaction.svg";
-import users from "../../assets/icons/users.svg";
-import whitelist from "../../assets/icons/whitelist.svg";
-import organization from "../../assets/icons/organisation.svg";
+import {
+  ArrowDownIcon,
+  AuditIcon,
+  DecisionIcon,
+  FeesIcon,
+  FeesAndPricingIcon,
+  GuarantorsIcon,
+  HomeIcon,
+  KarmaIcon,
+  LoanIcon,
+  LogOutIcon,
+  ReportIcon,
+  RequestLoanIcon,
+  SavingsIcon,
+  ServiceAccountIcon,
+  ServicesIcon,
+  SettlementIcon,
+  SystemMessageIcon,
+  TransactionIcon,
+  UsersIcon,
+  WhitelistIcon,
+  OrganizationIcon,
+} from "../../assets";
 import { NavLink } from "react-router-dom";
 
 const SideBar: React.FC = () => {
@@ -36,47 +37,63 @@ const SideBar: React.FC = () => {
     {
       category: "Customers",
       items: [
-        { name: "Users", icon: users, path: "/dashboard" },
-        { name: "Guarantors", icon: guarantors, path: "/guarantors" },
-        { name: "Loans", icon: loan, path: "/loans" },
-        { name: "Decision Models", icon: decision, path: "/decision-models" },
-        { name: "Savings", icon: savings, path: "/savings" },
-        { name: "Loan Requests", icon: requestLoan, path: "/loan-requests" },
-        { name: "Whitelist", icon: whitelist, path: "/whitelist" },
-        { name: "Karma", icon: karma, path: "/karma" },
+        { name: "Users", icon: UsersIcon, path: "/dashboard" },
+        { name: "Guarantors", icon: GuarantorsIcon, path: "/guarantors" },
+        { name: "Loans", icon: LoanIcon, path: "/loans" },
+        {
+          name: "Decision Models",
+          icon: DecisionIcon,
+          path: "/decision-models",
+        },
+        { name: "Savings", icon: SavingsIcon, path: "/savings" },
+        {
+          name: "Loan Requests",
+          icon: RequestLoanIcon,
+          path: "/loan-requests",
+        },
+        { name: "Whitelist", icon: WhitelistIcon, path: "/whitelist" },
+        { name: "Karma", icon: KarmaIcon, path: "/karma" },
       ],
     },
     {
       category: "Businesses",
       items: [
-        { name: "Organization", icon: organization, path: "/organization" },
-        { name: "Loan Products", icon: loan, path: "/loan-products" },
-        { name: "Savings Products", icon: savings, path: "/savings-products" },
-        { name: "Fees and Charges", icon: fees, path: "/fees-and-charges" },
-        { name: "Transactions", icon: transaction, path: "/transactions" },
-        { name: "Services", icon: services, path: "/services" },
+        { name: "Organization", icon: OrganizationIcon, path: "/organization" },
+        { name: "Loan Products", icon: LoanIcon, path: "/loan-products" },
+        {
+          name: "Savings Products",
+          icon: SavingsIcon,
+          path: "/savings-products",
+        },
+        { name: "Fees and Charges", icon: FeesIcon, path: "/fees-and-charges" },
+        {
+          name: "Transactions",
+          icon: TransactionIcon,
+          path: "/TransactionIcons",
+        },
+        { name: "Services", icon: ServicesIcon, path: "/services" },
         {
           name: "Service Account",
-          icon: serviceAccount,
+          icon: ServiceAccountIcon,
           path: "/service-account",
         },
-        { name: "Settlements", icon: settlement, path: "/settlements" },
-        { name: "Reports", icon: report, path: "/reports" },
+        { name: "Settlements", icon: SettlementIcon, path: "/settlements" },
+        { name: "Reports", icon: ReportIcon, path: "/reports" },
       ],
     },
     {
       category: "Settings",
       items: [
-        { name: "Preferences", icon: systemMessage, path: "/preferences" },
+        { name: "Preferences", icon: SystemMessageIcon, path: "/preferences" },
         {
           name: "Fees and Pricing",
-          icon: feesAndPricing,
+          icon: FeesAndPricingIcon,
           path: "/fees-pricing",
         },
-        { name: "Audit Logs", icon: audit, path: "/audit-logs" },
+        { name: "Audit Logs", icon: AuditIcon, path: "/audit-logs" },
         {
           name: "System Messages",
-          icon: systemMessage,
+          icon: SystemMessageIcon,
           path: "/system-messages",
         },
       ],
@@ -89,12 +106,12 @@ const SideBar: React.FC = () => {
         <div className={`bar ${isOpen ? "open" : "closed"}`}></div>
       </button>
       <div className="switch-organization">
-        <img src={organization} alt="Organization" />
+        <img src={OrganizationIcon} alt="Organization" />
         <span className="switch-organization-text">Switch Organization</span>
-        <img src={arrowDown} alt="Arrow Down" className="arrow-icon" />
+        <img src={ArrowDownIcon} alt="Arrow Down" className="arrow-icon" />
       </div>
       <h1 className="dashboard-title">
-        <img src={home} alt="Home" />
+        <img src={HomeIcon} alt="Home" />
         <span className="dashboard-text">Dashboard</span>
       </h1>
       <div className="menu">
@@ -119,7 +136,7 @@ const SideBar: React.FC = () => {
         ))}
         <footer className="sidebar-footer">
           <Link to="/" className="logout">
-            <img src={logOut} alt="Logout" />
+            <img src={LogOutIcon} alt="Logout" />
             <span className="logout-text">Logout</span>
           </Link>
           <p>v1.20</p>
