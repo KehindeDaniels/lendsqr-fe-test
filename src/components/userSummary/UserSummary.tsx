@@ -8,25 +8,27 @@ import loanIcon from "../../assets/loanUsers.svg";
 import savingsIcon from "../../assets/savinUsers.svg";
 
 const UserSummary: React.FC = () => {
-  const { userList } = useUsers();
+  const { users } = useUsers();
 
   const summaryData = [
-    { title: "USERS", value: userList.length.toString(), icon: userIcon },
+    { title: "USERS", value: users.length.toString(), icon: userIcon },
     {
       title: "ACTIVE USERS",
-      value: userList
-        .filter((user) => user.status === "Active")
+      value: users
+        .filter((user) => user.generalInfo.status === "Active")
         .length.toString(),
       icon: activeIcon,
     },
     {
       title: "USERS WITH LOANS",
-      value: userList.filter((user) => user.hasLoan).length.toString(),
+      value: users.filter((user) => user.generalInfo.hasLoan).length.toString(),
       icon: loanIcon,
     },
     {
       title: "USERS WITH SAVINGS",
-      value: userList.filter((user) => user.hasSavings).length.toString(),
+      value: users
+        .filter((user) => user.generalInfo.hasSavings)
+        .length.toString(),
       icon: savingsIcon,
     },
   ];

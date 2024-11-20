@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import axios from "axios";
 import localForage from "localforage";
-import { UserSummary, UserDetails, UserContextType } from "../types/types";
+import { User, UserContextType } from "../types/types";
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
@@ -16,66 +16,42 @@ interface UserProviderProps {
 }
 
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
-  const [userList, setUserList] = useState<UserSummary[]>([]);
-  const [userDetails, setUserDetails] = useState<UserDetails[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
-    fetchUserData();
-    fetchUserDetails();
+    fetchUsers();
   }, []);
 
-  const fetchUserData = async () => {
-    const userListData = await localForage.getItem<UserSummary[]>("userList");
-    console.log("Retrieved userList from localForage:", userListData);
-    if (userListData) {
-      setUserList(userListData);
-    } else {
-      const response = await axios.get<UserSummary[]>(
-        "https://run.mocky.io/v3/4989c9d5-ec0f-4b4f-9270-c4b456e7f9d8"
-      );
-
-      setUserList(response.data);
-      localForage.setItem("userList", response.data);
-    }
-  };
-
-  const fetchUserDetails = async () => {
-    const userDetailsData = await localForage.getItem<UserDetails[]>(
-      "userDetails"
-    );
-    if (userDetailsData) {
-      setUserDetails(userDetailsData);
-    } else {
-      const response = await axios.get<UserDetails[]>(
-        "https://run.mocky.io/v3/c4087e71-851a-43e5-9dff-eaab28a6cddc"
-      );
-      setUserDetails(response.data);
-      localForage.setItem("userDetails", response.data);
+  const fetchUsers = async () => {
+    try {
+      const usersData = await localForage.getItem<User[]>("users");
+      if (usersData) {
+        setUsers(usersData);
+      } else {
+        const response = await axios.get<User[]>(
+          "https://run.mocky.io/v3/be516433-fb60-441e-b94d-8da87437130d"
+        );
+        setUsers(response.data);
+        await localForage.setItem("users", response.data);
+      }
+    } catch (error) {
+      console.error("Failed to fetch users", error);
     }
   };
 
   const updateUserStatus = async (userId: string, newStatus: string) => {
-    const updatedUserList = userList.map((user) => {
-      // console.log(user);
-      if (user.id === userId) {
-        return { ...user, status: newStatus };
-      }
-      return user;
-    });
-    setUserList(updatedUserList);
-    await localForage.setItem("userList", updatedUserList);
+    const updatedUsers = users.map((user) =>
+      user.generalInfo.id === userId
+        ? { ...user, generalInfo: { ...user.generalInfo, status: newStatus } }
+        : user
+    );
+
+    setUsers(updatedUsers);
+    await localForage.setItem("users", updatedUsers);
   };
 
   return (
-    <UserContext.Provider
-      value={{
-        userList,
-        userDetails,
-        fetchUserData,
-        fetchUserDetails,
-        updateUserStatus,
-      }}
-    >
+    <UserContext.Provider value={{ users, fetchUsers, updateUserStatus }}>
       {children}
     </UserContext.Provider>
   );

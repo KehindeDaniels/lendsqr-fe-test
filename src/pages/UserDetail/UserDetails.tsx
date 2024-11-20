@@ -1,33 +1,31 @@
-// src/components/UserDetails.tsx
 import React, { useEffect, useState } from "react";
 import { useParams, Outlet, useNavigate } from "react-router-dom";
-import { UserDetails as UserDetailsType } from "../../types/types";
-import { useUsers } from "../../context/UserContext";
+import { useUsers } from "../../context/UserContext"; // Make sure the path matches
 import UserDetailsSummary from "../../components/AllUserDetails/userDetailOverview/UserDetailsSummary";
 import UserDetailNav from "../../components/AllUserDetails/UserDetailNav/UserDetailNav";
 import UserDetailInfo from "../../components/AllUserDetails/UserDetailInfo/UserDetailInfo";
 import goback from "../../assets/goback.svg";
+import { User } from "../../types/types";
 import "./userDetails.scss";
 
 const UserDetails: React.FC = () => {
   const { userId } = useParams();
-  const { userDetails, fetchUserDetails } = useUsers();
-  const [userDetail, setUserDetail] = useState<UserDetailsType | undefined>();
+  const { users, fetchUsers } = useUsers();
+  const [userDetail, setUserDetail] = useState<User | undefined>();
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetching user details only if they are not already loaded
-    if (userDetails.length === 0) {
-      fetchUserDetails();
+    if (users.length === 0) {
+      fetchUsers();
     } else {
-      const detail = userDetails.find((user) => user.id === userId);
+      const detail = users.find((user) => user.generalInfo.id === userId);
       if (!detail) {
         navigate("/404");
       } else {
         setUserDetail(detail);
       }
     }
-  }, [userId, userDetails, fetchUserDetails, navigate]);
+  }, [userId, users, fetchUsers, navigate]);
 
   return (
     <>
@@ -45,6 +43,7 @@ const UserDetails: React.FC = () => {
           </div>
         </div>
       </div>
+
       <div className="user-details-container">
         <div className="user-details-header">
           <UserDetailsSummary userDetail={userDetail} />

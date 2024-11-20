@@ -1,8 +1,8 @@
 import React from "react";
-import { UserDetails as UserDetailsType } from "../../../types/types";
+import { User } from "../../../types/types";
 import "./userDetailInfo.scss";
 interface UserDetailInfoProps {
-  userDetail: UserDetailsType | undefined;
+  userDetail: User | undefined;
 }
 
 const UserDetailInfo: React.FC<UserDetailInfoProps> = ({ userDetail }) => {
@@ -13,8 +13,8 @@ const UserDetailInfo: React.FC<UserDetailInfoProps> = ({ userDetail }) => {
     {
       title: "Personal Information",
       data: [
-        { label: "Full Name", value: userDetail.fullName },
-        { label: "Phone Number", value: userDetail.personalInfo.phone },
+        { label: "Full Name", value: userDetail.generalInfo.fullName },
+        { label: "Phone Number", value: userDetail.generalInfo.phoneNumber },
         { label: "Email Address", value: userDetail.personalInfo.email },
         { label: "BVN", value: userDetail.bank.bvn },
         { label: "Gender", value: userDetail.personalInfo.gender },

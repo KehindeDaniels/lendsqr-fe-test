@@ -1,61 +1,67 @@
 // src/types/types.ts
-export interface UserSummary {
+
+export interface GeneralInfo {
   id: string;
-  email: string;
-  status: string;
+  organization: string;
   fullName: string;
+  email: string;
   dateJoined: string;
   phoneNumber: string;
-  organization: string;
+  status: string;
   hasLoan: boolean;
   hasSavings: boolean;
 }
 
-export interface UserDetails {
-  id: string;
-  fullName: string;
+export interface PersonalInfo {
   userTier: number;
-  status: string;
-  personalInfo: {
-    phone: string;
-    email: string;
-    gender: string;
-    maritalStatus: string;
-    children: number;
-    typeOfResidence: string;
-  };
-  employmentInfo: {
-    levelOfEducation: string;
-    employmentStatus: string;
-    sectorOfEmployment: string;
-    durationOfEmployment: string;
-    officeEmail: string;
-    monthlyIncome: string;
-    loanRepayment: string;
-    organization: string;
-  };
-  bank: {
-    name: string;
-    accountNumber: string;
-    bvn: string;
-  };
-  socials: {
-    twitter: string;
-    facebook: string;
-    instagram: string;
-  };
-  guarantor: {
-    fullName: string;
-    phone: string;
-    email: string;
-    relationship: string;
-  };
+  email: string;
+  gender: string;
+  maritalStatus: string;
+  children: number;
+  typeOfResidence: string;
+}
+
+export interface EmploymentInfo {
+  levelOfEducation: string;
+  employmentStatus: string;
+  sectorOfEmployment: string;
+  durationOfEmployment: string;
+  officeEmail: string;
+  monthlyIncome: string;
+  loanRepayment: string;
+  organization: string;
+}
+
+export interface BankInfo {
+  name: string;
+  accountNumber: string;
+  bvn: string;
+}
+
+export interface SocialsInfo {
+  twitter: string;
+  facebook: string;
+  instagram: string;
+}
+
+export interface GuarantorInfo {
+  fullName: string;
+  phone: string;
+  email: string;
+  relationship: string;
+}
+
+export interface User {
+  generalInfo: GeneralInfo;
+  personalInfo: PersonalInfo;
+  employmentInfo: EmploymentInfo;
+  bank: BankInfo;
+  socials: SocialsInfo;
+  guarantor: GuarantorInfo;
 }
 
 export interface UserContextType {
-  userList: UserSummary[];
-  userDetails: UserDetails[];
-  fetchUserData: () => void;
-  fetchUserDetails: () => void;
+  users: User[];
+  fetchUsers: () => void;
   updateUserStatus: (userId: string, newStatus: string) => void;
 }

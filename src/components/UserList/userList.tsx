@@ -11,19 +11,18 @@ import {
   flexRender,
 } from "@tanstack/react-table";
 import { useUsers } from "../../context/UserContext";
-import { UserSummary } from "../../types/types";
+import { User } from "../../types/types";
 import ActionMenu from "../ActionMenu/ActionMenu";
 import FilterModal from "../FilterModal/FilterModal";
 import { FilterIcon, DropDown } from "../../assets/index";
 
 const UserList: React.FC = () => {
-  const { userList } = useUsers();
+  const { users } = useUsers();
   const navigate = useNavigate();
   const [sorting, setSorting] = useState<SortingState>([]);
   const [showFilterModal, setShowFilterModal] = useState<boolean>(false);
 
   const toggleFilterModal = () => setShowFilterModal(!showFilterModal);
-
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
     return new Intl.DateTimeFormat("en-US", {
@@ -36,112 +35,65 @@ const UserList: React.FC = () => {
     }).format(date);
   };
 
-  const columns: ColumnDef<UserSummary>[] = [
+  const columns: ColumnDef<User>[] = [
     {
-      accessorKey: "organization",
-      header: ({ column }) => (
-        <div
-          className="column-header"
-          onClick={() => column.toggleSorting()}
-          style={{ cursor: "pointer" }}
-        >
-          <span>Organization</span>
-          {column.getIsSorted() === "asc" && (
-            <img src={FilterIcon} alt="Ascending" />
-          )}
-          {column.getIsSorted() === "desc" && (
-            <img src={arrowDown} alt="Descending" />
-          )}
-          {!column.getIsSorted() && <img src={FilterIcon} alt="Unsorted" />}
-        </div>
-      ),
-      cell: (info) => info.getValue() as string,
+      id: "organization",
+      accessorFn: (row) => row.generalInfo.organization,
+      header: () => <span>Organization</span>,
+      cell: (info) => info.getValue(),
     },
     {
-      accessorKey: "fullName",
-      header: ({ column }) => (
-        <div
-          className="column-header"
-          onClick={() => column.toggleSorting()}
-          style={{ cursor: "pointer" }}
-        >
-          <span>Full Name</span>
-          {column.getIsSorted() === "asc" && (
-            <img src={FilterIcon} alt="Ascending" />
-          )}
-          {column.getIsSorted() === "desc" && (
-            <img src={FilterIcon} alt="Descending" />
-          )}
-          {!column.getIsSorted() && <img src={FilterIcon} alt="Unsorted" />}
-        </div>
-      ),
+      id: "fullName",
+      accessorFn: (row) => row.generalInfo.fullName,
+      header: () => <span>Full Name</span>,
       cell: (info) => (
         <div
           style={{ cursor: "pointer" }}
-          onClick={() => navigate(`/dashboard/users/${info.row.original.id}`)}
+          onClick={() =>
+            navigate(`/dashboard/users/${info.row.original.generalInfo.id}`)
+          }
         >
           {info.getValue() as string}
         </div>
       ),
     },
     {
-      accessorKey: "email",
-      header: () => <span className="column-header">Email</span>,
+      id: "email",
+      accessorFn: (row) => row.generalInfo.email,
+      header: () => <span>Email</span>,
+      cell: (info) => info.getValue(),
     },
     {
-      accessorKey: "dateJoined",
-      header: ({ column }) => (
-        <div
-          className="column-header"
-          onClick={() => column.toggleSorting()}
-          style={{ cursor: "pointer" }}
-        >
-          <span>Date Joined</span>
-          {column.getIsSorted() === "asc" && (
-            <img src={FilterIcon} alt="Ascending" />
-          )}
-          {column.getIsSorted() === "desc" && (
-            <img src={FilterIcon} alt="Descending" />
-          )}
-          {!column.getIsSorted() && <img src={FilterIcon} alt="Unsorted" />}
-        </div>
-      ),
+      id: "dateJoined",
+      accessorFn: (row) => row.generalInfo.dateJoined,
+      header: () => <span>Date Joined</span>,
       cell: (info) => formatDate(info.getValue() as string),
     },
     {
-      accessorKey: "phoneNumber",
-      header: () => <span className="column-header">Phone Number</span>,
-      cell: (info) => <span>{info.getValue() as string}</span>,
+      id: "phoneNumber",
+      accessorFn: (row) => row.generalInfo.phoneNumber,
+      header: () => <span>Phone Number</span>,
+      cell: (info) => info.getValue(),
     },
     {
-      accessorKey: "status",
-      header: () => <span className="column-header">Status</span>,
+      id: "status",
+      accessorFn: (row) => row.generalInfo.status,
+      header: () => <span>Status</span>,
       cell: (info) => (
-        <span
-          className={
-            info.getValue() === "Active"
-              ? "sactive"
-              : info.getValue() === "Blacklisted"
-              ? "sblacklisted"
-              : info.getValue() === "Pending"
-              ? "spending"
-              : "sinactive"
-          }
-        >
+        <span className={`status ${(info.getValue() as string).toLowerCase()}`}>
           {info.getValue() as string}
         </span>
       ),
     },
     {
-      accessorFn: (row) => row.id,
       id: "action",
-      header: () => <span className="column-header">Action</span>,
-      cell: (info) => <ActionMenu userId={info.row.original.id} />,
+      accessorFn: (row) => row.generalInfo.id,
+      header: () => <span>Action</span>,
+      cell: (info) => <ActionMenu userId={info.row.original.generalInfo.id} />,
     },
   ];
-
   const table = useReactTable({
-    data: userList,
+    data: users,
     columns,
     state: {
       sorting,
@@ -237,7 +189,6 @@ const UserList: React.FC = () => {
             ))}
           </tbody>
         </table>
-
         {/* Pagination */}
         <div className="pagination-controls">
           <div className="left">
@@ -254,7 +205,7 @@ const UserList: React.FC = () => {
                 </option>
               ))}
             </select>{" "}
-            out of {userList.length}
+            out of {users.length}
           </div>
 
           <div className="right">

@@ -1,9 +1,9 @@
 import React from "react";
-import { UserDetails as UserDetailsType } from "../../../types/types";
+import { User } from "../../../types/types";
 import "./userDetailsSummary.scss";
 
 interface UserDetailsSummaryProps {
-  userDetail: UserDetailsType | undefined;
+  userDetail: User | undefined;
 }
 
 const UserDetailsSummary: React.FC<UserDetailsSummaryProps> = ({
@@ -22,17 +22,17 @@ const UserDetailsSummary: React.FC<UserDetailsSummaryProps> = ({
             className="user-avatar"
           />
           <div className="name-id">
-            <h1>{userDetail?.fullName}</h1>
-            <p>{userDetail?.id}</p>
+            <h1>{userDetail?.generalInfo.fullName}</h1>
+            <p>{userDetail?.generalInfo.id}</p>
           </div>
         </div>
-        {/* <div className="divider"></div>
+        <div className="divider"></div>
         <div className="user-titer">
           <span>User's Tier:</span>
           <p>
-            {userDetail?.userTier
-              ? "★".repeat(userDetail.userTier) +
-                "☆".repeat(5 - userDetail.userTier)
+            {userDetail?.personalInfo.userTier
+              ? "★".repeat(userDetail.personalInfo.userTier) +
+                "☆".repeat(5 - userDetail.personalInfo.userTier)
               : "★★★★★"}
           </p>
         </div>
@@ -46,18 +46,18 @@ const UserDetailsSummary: React.FC<UserDetailsSummaryProps> = ({
         <div className="userStatus">
           <p
             className={
-              userDetail?.status === "Active"
+              userDetail?.generalInfo.status === "Active"
                 ? "active"
-                : userDetail?.status === "Blacklisted"
+                : userDetail?.generalInfo.status === "Blacklisted"
                 ? "blacklisted"
-                : userDetail?.status === "Inactive"
+                : userDetail?.generalInfo.status === "Inactive"
                 ? "sinactive"
                 : "spending"
             }
           >
-            {userDetail?.status}
+            {userDetail?.generalInfo.status}
           </p>
-        </div> */}
+        </div>
       </div>
     </div>
   );
